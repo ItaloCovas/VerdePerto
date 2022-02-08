@@ -70,10 +70,10 @@ class _HomePageState extends State<HomePage> {
                   child: Padding(
                     padding: EdgeInsets.only(left: 35.0, right: 35.0),
                     child: Text(
-                        ' • Descarte irregular de lixo;\n'
-                        ' • Desmatamento/Poda Ilegal;\n'
-                        ' • Incêndios/Queimadas;\n'
-                        ' • Entre outros...\n',
+                        '• Descarte irregular de lixo;\n'
+                        '• Desmatamento/Poda Ilegal;\n'
+                        '• Incêndios/Queimadas;\n'
+                        '• Entre outros...\n',
                         textAlign: TextAlign.justify,
                         style: TextStyle(
                           fontSize: 14,
@@ -94,13 +94,11 @@ class _HomePageState extends State<HomePage> {
               children: const [
                 Flexible(
                   child: Padding(
-                    padding: EdgeInsets.only(left: 35.0, right: 35.0),
+                    padding: EdgeInsets.only(left: 35.0),
                     child: Text(
-                        'É simples! Basta apenas alguns cliques.O usuário deverá clicar no botão indicado com o símbolo de +  e tirar uma foto do local onde o problema ambiental se encontra.Logo após, deverá preencher um formulário (poderá ser de forma anônima) dando informações adicionais sobre a ocorrência.E está feito! Faremos com que sua ocorrência tenha o alcance devido, sendo analisada pela nossa equipe. Buscamos por soluções! ',
+                        'É simples! Basta apenas alguns cliques. O usuário deverá clicar no botão indicado com o símbolo de +  e tirar uma foto do local onde o problema ambiental se encontra. Logo após, deverá preencher um formulário (poderá ser de forma anônima) dando informações adicionais sobre a ocorrência. E está feito! Faremos com que sua ocorrência tenha o alcance devido, sendo analisada pela nossa equipe. Buscamos por soluções! ',
                         textAlign: TextAlign.start,
-                        style: TextStyle(
-                          fontSize: 14,
-                        )),
+                        style: TextStyle(fontSize: 14, letterSpacing: 4)),
                   ),
                 )
               ],
