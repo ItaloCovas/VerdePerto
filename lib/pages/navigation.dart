@@ -3,7 +3,7 @@ import 'package:verde_perto/pages/home_page.dart';
 import 'package:verde_perto/theme/theme.dart';
 
 class Navigation extends StatefulWidget {
-  Navigation({Key? key}) : super(key: key);
+  const Navigation({Key? key}) : super(key: key);
 
   @override
   State<Navigation> createState() => _NavigationState();
@@ -20,13 +20,13 @@ class _NavigationState extends State<Navigation> {
       body: pages[selectedIndex],
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Icon(Icons.add_a_photo_outlined, color: textcolor),
+        child: const Icon(Icons.add_a_photo_outlined, color: textColor),
         elevation: 4.0,
         backgroundColor: primaryGreen,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
+        shape: const CircularNotchedRectangle(),
         clipBehavior: Clip.antiAlias,
         notchMargin: 5,
         child: BottomNavigationBar(
@@ -40,8 +40,8 @@ class _NavigationState extends State<Navigation> {
               });
             },
             currentIndex: selectedIndex,
-            backgroundColor: textcolor,
-            items: [
+            backgroundColor: textColor,
+            items: const [
               BottomNavigationBarItem(
                   icon: Icon(
                     Icons.home_outlined,

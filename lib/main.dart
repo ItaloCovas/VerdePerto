@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:verde_perto/pages/home_page.dart';
-import 'package:verde_perto/pages/navigation.dart';
-=======
->>>>>>> e86f3af191069667dd47df42e101aaa53c2e1e1b
 import 'package:verde_perto/pages/splashscreen_page.dart';
 
 void main() {
@@ -23,11 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'Poppins',
       ),
-<<<<<<< HEAD
-      home: Navigation(),
-=======
       home: const SplashScreenPage(),
->>>>>>> e86f3af191069667dd47df42e101aaa53c2e1e1b
     );
   }
 }
