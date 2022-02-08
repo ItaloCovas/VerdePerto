@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:verde_perto/pages/home_page.dart';
 import 'package:verde_perto/theme/theme.dart';
+import 'package:verde_perto/widgets/navigation_home.dart';
 
 class SplashScreenPage extends StatefulWidget {
   const SplashScreenPage({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
     super.initState();
     Future.delayed(Duration(seconds: splashScreenTime), () async {
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-        return HomePage();
+        return NavigationHome();
       }));
     });
   }

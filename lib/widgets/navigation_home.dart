@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:verde_perto/pages/home_page.dart';
+import 'package:verde_perto/pages/reports_page.dart';
 import 'package:verde_perto/theme/theme.dart';
 
 class NavigationHome extends StatefulWidget {
@@ -12,7 +13,7 @@ class NavigationHome extends StatefulWidget {
 class _NavigationHomeState extends State<NavigationHome> {
   int selectedIndex = 0;
 
-  final List<Widget> pages = [HomePage()];
+  final List<Widget> pages = [HomePage(), ReportsPage()];
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +35,12 @@ class _NavigationHomeState extends State<NavigationHome> {
         clipBehavior: Clip.hardEdge,
         notchMargin: 7,
         child: BottomNavigationBar(
+            showSelectedLabels: true,
+            showUnselectedLabels: true,
+            selectedFontSize: 15,
             selectedIconTheme:
-                const IconThemeData(color: Colors.white, size: 30),
-            selectedItemColor: Colors.black,
+                const IconThemeData(color: primaryGreen, size: 28),
+            selectedItemColor: primaryGreen,
             unselectedItemColor: Colors.grey.shade400,
             onTap: (int index) {
               setState(() {
@@ -49,23 +53,15 @@ class _NavigationHomeState extends State<NavigationHome> {
               BottomNavigationBarItem(
                   icon: Icon(
                     Icons.home_outlined,
-                    color: Colors.grey,
                     size: 28,
                   ),
-                  title: Text(
-                    "Home",
-                    style: TextStyle(fontFamily: "Poppins"),
-                  )),
+                  label: 'Home'),
               BottomNavigationBarItem(
                   icon: Icon(
                     Icons.warning_amber,
-                    color: Colors.grey,
                     size: 25,
                   ),
-                  title: Text(
-                    "Ocorrências",
-                    style: TextStyle(fontFamily: "Poppins"),
-                  ))
+                  label: 'Ocorrências')
             ]),
       ),
     );
