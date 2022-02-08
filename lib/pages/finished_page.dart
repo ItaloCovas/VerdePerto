@@ -1,5 +1,8 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:verde_perto/pages/home_page.dart';
+import 'package:verde_perto/theme/theme.dart';
 
 class FinishedPage extends StatelessWidget {
   const FinishedPage({Key? key}) : super(key: key);
@@ -38,15 +41,27 @@ class FinishedPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(30.0),
                 child: Text(
-                  'Número da Ocorrência: 1\n'
-                  'Consulte sua ocorrência na página de Consulta Pública',
+                  'Número da Ocorrência: 1\n',
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  style: TextStyle(fontSize: 18),
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              )
+              RichText(
+                  text: TextSpan(children: [
+                TextSpan(
+                    text: 'Consulte sua ocorrência na página de ',
+                    style: TextStyle(color: Colors.black, fontSize: 18)),
+                TextSpan(
+                    text: 'Consulta Pública',
+                    style: TextStyle(color: primaryGreen, fontSize: 18),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) {
+                          return HomePage();
+                        }));
+                      }),
+              ]))
             ],
           ),
         )
