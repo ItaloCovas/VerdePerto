@@ -13,17 +13,34 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-    return Container(
-      height: height,
-      width: width,
-      color: primaryGreen,
-      child: Column(
-        children: const [
-          Text("Bem-vindo",
-              style: TextStyle(
-                color: Colors.white,
-              )),
-        ],
+    return Material(
+      child: Container(
+        height: height,
+        width: width,
+        color: primaryGreen,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Text("Bem-vindo",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 40,
+                )),
+            const SizedBox(height: 10),
+            const Text("ao",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 40,
+                )),
+            Image.asset(
+              'assets/images/logo_splash.png',
+              height: 180,
+            ),
+            const SizedBox(height: 30),
+            const CircularProgressIndicator(color: Colors.white),
+          ],
+        ),
       ),
     );
   }
