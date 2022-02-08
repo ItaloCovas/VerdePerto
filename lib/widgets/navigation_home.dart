@@ -2,12 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:verde_perto/pages/home_page.dart';
 import 'package:verde_perto/theme/theme.dart';
 
-class NavigationHome extends StatefulWidget {
-  NavigationHome({Key? key}) : super(key: key);
-
-  @override
-  State<NavigationHome> createState() => _NavigationHomeState();
-}
+@override
+State<NavigationHome> createState() => _NavigationHomeState();
 
 class _NavigationHomeState extends State<NavigationHome> {
   int selectedIndex = 0;
@@ -26,6 +22,8 @@ class _NavigationHomeState extends State<NavigationHome> {
           size: 25,
         ),
         elevation: 7.0,
+        child: const Icon(Icons.add_a_photo_outlined, color: textColor),
+        elevation: 4.0,
         backgroundColor: primaryGreen,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -33,6 +31,9 @@ class _NavigationHomeState extends State<NavigationHome> {
         shape: CircularNotchedRectangle(),
         clipBehavior: Clip.hardEdge,
         notchMargin: 7,
+        shape: const CircularNotchedRectangle(),
+        clipBehavior: Clip.antiAlias,
+        notchMargin: 5,
         child: BottomNavigationBar(
             selectedIconTheme:
                 const IconThemeData(color: Colors.white, size: 30),
@@ -45,6 +46,7 @@ class _NavigationHomeState extends State<NavigationHome> {
             },
             currentIndex: selectedIndex,
             backgroundColor: Colors.white,
+            backgroundColor: textColor,
             items: const [
               BottomNavigationBarItem(
                   icon: Icon(

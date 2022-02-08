@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:verde_perto/pages/home_page.dart';
 import 'package:verde_perto/theme/theme.dart';
 
 class SplashScreenPage extends StatefulWidget {
@@ -9,10 +10,24 @@ class SplashScreenPage extends StatefulWidget {
 }
 
 class _SplashScreenPageState extends State<SplashScreenPage> {
+  int splashScreenTime = 4;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Future.delayed(Duration(seconds: splashScreenTime), () async {
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+        return HomePage();
+      }));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
+
     return Material(
       child: Container(
         height: height,
