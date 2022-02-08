@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:verde_perto/pages/finished_page.dart';
 import 'package:verde_perto/pages/splashscreen_page.dart';
+import 'package:verde_perto/widgets/navigation_home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'Poppins',
       ),
-      home: const FinishedPage(),
+      home: NavigationHome(),
     );
   }
 }
