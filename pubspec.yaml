@@ -95,3 +95,8 @@ fonts:
         - asset: assets/fonts/Poppins-Bold.ttf
         - asset: assets/fonts/Poppins-Medium.ttf
         - asset: assets/fonts/Poppins-S.ttf
+    
+    - family: Cabrito
+      fonts:
+        - asset: assets/fonts/CabritoSerif-NorThilt.otf
+           

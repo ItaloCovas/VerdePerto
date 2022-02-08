@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:verde_perto/pages/home_page.dart';
 import 'package:verde_perto/theme/theme.dart';
 
-class Navigation extends StatefulWidget {
-  Navigation({Key? key}) : super(key: key);
+class NavigationHome extends StatefulWidget {
+  NavigationHome({Key? key}) : super(key: key);
 
   @override
-  State<Navigation> createState() => _NavigationState();
+  State<NavigationHome> createState() => _NavigationHomeState();
 }
 
-class _NavigationState extends State<Navigation> {
+class _NavigationHomeState extends State<NavigationHome> {
   int selectedIndex = 0;
 
   final List<Widget> pages = [HomePage()];
@@ -20,15 +20,19 @@ class _NavigationState extends State<Navigation> {
       body: pages[selectedIndex],
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Icon(Icons.add_a_photo_outlined, color: textcolor),
-        elevation: 4.0,
+        child: const Icon(
+          Icons.add_a_photo_outlined,
+          color: Colors.white,
+          size: 25,
+        ),
+        elevation: 7.0,
         backgroundColor: primaryGreen,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
-        clipBehavior: Clip.antiAlias,
-        notchMargin: 5,
+        clipBehavior: Clip.hardEdge,
+        notchMargin: 7,
         child: BottomNavigationBar(
             selectedIconTheme:
                 const IconThemeData(color: Colors.white, size: 30),
@@ -40,20 +44,28 @@ class _NavigationState extends State<Navigation> {
               });
             },
             currentIndex: selectedIndex,
-            backgroundColor: textcolor,
-            items: [
+            backgroundColor: Colors.white,
+            items: const [
               BottomNavigationBarItem(
                   icon: Icon(
                     Icons.home_outlined,
                     color: Colors.grey,
+                    size: 28,
                   ),
-                  label: ""),
+                  title: Text(
+                    "Home",
+                    style: TextStyle(fontFamily: "Poppins"),
+                  )),
               BottomNavigationBarItem(
                   icon: Icon(
                     Icons.warning_amber,
                     color: Colors.grey,
+                    size: 25,
                   ),
-                  label: "")
+                  title: Text(
+                    "Ocorrências",
+                    style: TextStyle(fontFamily: "Poppins"),
+                  ))
             ]),
       ),
     );

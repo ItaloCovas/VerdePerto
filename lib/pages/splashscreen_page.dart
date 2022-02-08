@@ -24,9 +24,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
           children: [
             const Text("Bem-vindo",
                 style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 40,
-                )),
+                    color: Colors.white, fontSize: 40, fontFamily: 'Cabrito')),
             const SizedBox(height: 10),
             const Text("ao",
                 style: TextStyle(
