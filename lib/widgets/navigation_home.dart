@@ -1,10 +1,15 @@
+import 'dart:io' show File;
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:verde_perto/pages/home_page.dart';
 import 'package:verde_perto/pages/reports_page.dart';
 import 'package:verde_perto/theme/theme.dart';
 
+final picker = ImagePicker();
+
 class NavigationHome extends StatefulWidget {
-  NavigationHome({Key? key}) : super(key: key);
+  const NavigationHome({Key? key}) : super(key: key);
 
   @override
   State<NavigationHome> createState() => _NavigationHomeState();
@@ -13,14 +18,26 @@ class NavigationHome extends StatefulWidget {
 class _NavigationHomeState extends State<NavigationHome> {
   int selectedIndex = 0;
 
-  final List<Widget> pages = [HomePage(), ReportsPage()];
+  final List<Widget> pages = [const HomePage(), ReportsPage()];
 
   @override
   Widget build(BuildContext context) {
+    File? _image;
+    Future getImagefromcamera() async {
+      final XFile? photo = await picker.pickImage(source: ImageSource.camera);
+      final pickedFile = await picker.pickImage(
+          source: ImageSource.camera, maxWidth: 800, imageQuality: 50);
+      setState(() {
+        _image = _image;
+      });
+    }
+
     return Scaffold(
       body: pages[selectedIndex],
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          getImagefromcamera();
+        },
         child: const Icon(
           Icons.add_a_photo_outlined,
           color: Colors.white,
@@ -31,7 +48,7 @@ class _NavigationHomeState extends State<NavigationHome> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
+        shape: const CircularNotchedRectangle(),
         clipBehavior: Clip.hardEdge,
         notchMargin: 7,
         child: BottomNavigationBar(
