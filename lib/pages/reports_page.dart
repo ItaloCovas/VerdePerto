@@ -120,7 +120,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                       Expanded(
                                         child: Text(
                                           'Incêndio/Queimadas_BeloHorizonte',
-                                          style: TextStyle(fontSize: 14),
+                                          style: TextStyle(fontSize: 12),
                                         ),
                                       )
                                     ],
