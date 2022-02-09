@@ -2,8 +2,7 @@
     package="com.example.verde_perto">
    <application
         android:label="verde_perto"
-        android:name="${applicationName}"
-        android:label="pick_images_camera_and_gallery"
+        android:name="${applicationName}"       
         android:requestLegacyExternalStorage="true"
         android:icon="@mipmap/ic_launcher">
         <activity

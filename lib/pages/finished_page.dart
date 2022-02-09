@@ -9,70 +9,63 @@ class FinishedPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
-    var height = MediaQuery.of(context).size.height;
-
     return Scaffold(
-      body: Container(
-        width: width,
-        height: height,
-        color: secondaryGray,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(30.0),
-              child: Container(
-                child: const Text(
-                  'OBRIGADO!\n\n'
-                  'Sua ocorrência foi registrada com sucesso',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24,
+        body: CustomScrollView(
+      slivers: [
+        SliverFillRemaining(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: Container(
+                  child: Text(
+                    'Obrigado\n'
+                    'Sua ocorrência foi registrada com sucesso',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Image.asset(
-              'assets/images/check.png',
-              width: 140,
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            const Padding(
-              padding: EdgeInsets.only(top: 30),
-              child: Text(
-                'Número da Ocorrência: 1\n',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 16, color: Colors.black),
+              Image.asset(
+                'assets/images/check.png',
+                width: 200,
               ),
-            ),
-            RichText(
-                textAlign: TextAlign.center,
-                text: TextSpan(children: [
-                  const TextSpan(
-                      text: 'Consulte sua ocorrência na página de\n',
-                      style: TextStyle(color: Colors.black, fontSize: 16)),
-                  TextSpan(
-                      text: 'Consulta Pública',
-                      style: const TextStyle(
-                          color: primaryGreen,
-                          fontSize: 16,
-                          decoration: TextDecoration.underline,
-                          fontWeight: FontWeight.bold),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          Navigator.pushReplacement(context,
-                              MaterialPageRoute(builder: (context) {
-                            return HomePage();
-                          }));
-                        }),
-                ]))
-          ],
-        ),
-      ),
-    );
+              const SizedBox(
+                height: 30,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: Text(
+                  'Número da Ocorrência: 1\n',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+              RichText(
+                  text: TextSpan(children: [
+                TextSpan(
+                    text: 'Consulte sua ocorrência na página de ',
+                    style: TextStyle(color: Colors.black, fontSize: 18)),
+                TextSpan(
+                    text: 'Consulta Pública',
+                    style: TextStyle(color: primaryGreen, fontSize: 18),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) {
+                          return HomePage();
+                        }));
+                      }),
+              ]))
+            ],
+          ),
+        )
+      ],
+    ));
   }
 }
