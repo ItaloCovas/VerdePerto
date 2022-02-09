@@ -24,7 +24,7 @@ class _NavigationHomeState extends State<NavigationHome> {
   Widget build(BuildContext context) {
     File? _image;
     Future getImagefromcamera() async {
-      final XFile? photo = await picker.pickImage(source: ImageSource.camera);
+      final XFile? photo = await _picker.pickImage(source: ImageSource.camera);
       final pickedFile = await picker.pickImage(
           source: ImageSource.camera, maxWidth: 800, imageQuality: 50);
       setState(() {
@@ -83,4 +83,8 @@ class _NavigationHomeState extends State<NavigationHome> {
       ),
     );
   }
+}
+
+class _picker {
+  static pickImage({required ImageSource source}) {}
 }
