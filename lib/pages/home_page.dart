@@ -35,6 +35,7 @@ class _HomePageState extends State<HomePage> {
                   const Text(
                     'Desenvolvido para cuidar do meio ambiente',
                     style: TextStyle(fontWeight: FontWeight.w700, fontSize: 22),
+                    textAlign: TextAlign.start,
                   ),
                   Row(
                     children: [
@@ -62,9 +63,11 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(
                     height: 10,
                   ),
-                  const Text('Quais tipos de ocorrências você pode fazer?',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w700, fontSize: 22)),
+                  const Text(
+                    'Quais tipos de ocorrências você pode fazer?',
+                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 22),
+                    textAlign: TextAlign.start,
+                  ),
                   const SizedBox(
                     height: 10,
                   ),
@@ -83,11 +86,14 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-                  const Text('Como fazer sua ocorrência?',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 22,
-                      )),
+                  const Text(
+                    'Como fazer sua ocorrência?',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 22,
+                    ),
+                    textAlign: TextAlign.start,
+                  ),
                   const SizedBox(
                     height: 10,
                   ),
@@ -96,7 +102,7 @@ class _HomePageState extends State<HomePage> {
                       Flexible(
                         child: Text(
                             'É simples! Basta apenas alguns cliques. O usuário deverá clicar no botão indicado com o símbolo de +  e tirar uma foto do local onde o problema ambiental se encontra. Logo após, deverá preencher um formulário (poderá ser de forma anônima) dando informações adicionais sobre a ocorrência. E está feito! Faremos com que sua ocorrência tenha o alcance devido, sendo analisada pela nossa equipe. Buscamos por soluções! ',
-                            textAlign: TextAlign.start,
+                            textAlign: TextAlign.justify,
                             style:
                                 TextStyle(fontSize: 14, fontFamily: 'Poppins')),
                       ),
