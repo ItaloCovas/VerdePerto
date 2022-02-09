@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.only(left: 35, right: 35),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   const SizedBox(
@@ -37,14 +37,15 @@ class _HomePageState extends State<HomePage> {
                     style: TextStyle(fontWeight: FontWeight.w700, fontSize: 22),
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Flexible(
                         flex: 5,
                         child: Text(
                           "Um aplicativo pensado para ajudar seus usuários a exercerem seu papel como cidadão, através da publicização dos problemas ambientais vigentes no sudeste brasileiro!",
                           textAlign: TextAlign.start,
-                          style: TextStyle(fontSize: 14),
+                          style: TextStyle(
+                            fontSize: 14,
+                          ),
                         ),
                       ),
                       Flexible(
@@ -61,10 +62,10 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(
                     height: 10,
                   ),
-                  Text('Quais tipos de ocorrências você pode fazer?',
+                  const Text('Quais tipos de ocorrências você pode fazer?',
                       style:
                           TextStyle(fontWeight: FontWeight.w700, fontSize: 22)),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Row(
@@ -82,12 +83,12 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-                  Text('Como fazer sua ocorrência?',
+                  const Text('Como fazer sua ocorrência?',
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 22,
                       )),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Row(
@@ -101,7 +102,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 45,
                   )
                 ],
