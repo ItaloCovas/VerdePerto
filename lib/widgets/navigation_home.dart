@@ -1,12 +1,11 @@
-import 'dart:io' show File;
-
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:verde_perto/controller/image_store.dart';
+import 'package:verde_perto/pages/forms_page.dart';
 import 'package:verde_perto/pages/home_page.dart';
 import 'package:verde_perto/pages/reports_page.dart';
 import 'package:verde_perto/theme/theme.dart';
-
-final picker = ImagePicker();
 
 class NavigationHome extends StatefulWidget {
   const NavigationHome({Key? key}) : super(key: key);
@@ -17,26 +16,18 @@ class NavigationHome extends StatefulWidget {
 
 class _NavigationHomeState extends State<NavigationHome> {
   int selectedIndex = 0;
-
+  final imageStore = GetIt.I.get<ImageStore>();
   final List<Widget> pages = [const HomePage(), ReportsPage()];
 
   @override
   Widget build(BuildContext context) {
-    File? _image;
-    Future getImagefromcamera() async {
-      final XFile? photo = await _picker.pickImage(source: ImageSource.camera);
-      final pickedFile = await picker.pickImage(
-          source: ImageSource.camera, maxWidth: 800, imageQuality: 50);
-      setState(() {
-        _image = _image;
-      });
-    }
-
     return Scaffold(
       body: pages[selectedIndex],
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          getImagefromcamera();
+          imageStore.getImagefromcamera();
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => FormsPage()));
         },
         child: const Icon(
           Icons.add_a_photo_outlined,
@@ -83,8 +74,4 @@ class _NavigationHomeState extends State<NavigationHome> {
       ),
     );
   }
-}
-
-class _picker {
-  static pickImage({required ImageSource source}) {}
 }

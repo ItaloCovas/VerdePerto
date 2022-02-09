@@ -98,7 +98,7 @@ class _ReportsPageState extends State<ReportsPage> {
                               width: double.infinity,
                               height: 60,
                               decoration: BoxDecoration(
-                                  color: primaryGrey.withOpacity(0.5),
+                                  color: primaryGrey.withOpacity(0.3),
                                   borderRadius: BorderRadius.circular(10)),
                               child: Column(
                                 children: [

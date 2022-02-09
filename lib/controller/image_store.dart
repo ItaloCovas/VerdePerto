@@ -1,0 +1,27 @@
+import 'dart:io' show File;
+import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:mobx/mobx.dart';
+part 'image_store.g.dart';
+
+class ImageStore = _ImageStoreBase with _$ImageStore;
+
+class _picker {
+  static pickImage({required ImageSource source}) {}
+}
+
+abstract class _ImageStoreBase with Store {
+  final picker = ImagePicker();
+
+  @observable
+  File? image;
+
+  @action
+  Future getImagefromcamera() async {
+    final XFile? photo = await _picker.pickImage(source: ImageSource.camera);
+    final pickedFile = await picker.pickImage(
+        source: ImageSource.camera, maxWidth: 800, imageQuality: 50);
+    image = image;
+  }
+}
