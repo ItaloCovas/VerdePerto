@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
@@ -18,7 +16,21 @@ class _FormsPageState extends State<FormsPage> {
   Widget build(BuildContext context) {
     return Scaffold(body: Observer(builder: (_) {
       return Column(
-        children: [Image.file(imageStore.image as File)],
+        children: [
+          Observer(builder: (_) {
+            if (imageStore.image != null) {
+              return Image.file(
+                imageStore.image!,
+                width: 250,
+                height: 250,
+              );
+            } else {
+              return Center(
+                child: Text('Não há imagem'),
+              );
+            }
+          })
+        ],
       );
     }));
   }
