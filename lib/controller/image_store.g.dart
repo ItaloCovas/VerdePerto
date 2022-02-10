@@ -36,8 +36,8 @@ mixin _$ImageStore on _ImageStoreBase, Store {
   final _$pickImageAsyncAction = AsyncAction('_ImageStoreBase.pickImage');
 
   @override
-  Future<dynamic> pickImage(ImageSource source) {
-    return _$pickImageAsyncAction.run(() => super.pickImage(source));
+  Future<dynamic> pickImage(ImageSource source, BuildContext context) {
+    return _$pickImageAsyncAction.run(() => super.pickImage(source, context));
   }
 
   final _$saveImagePermanentlyAsyncAction =
