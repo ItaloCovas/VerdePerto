@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:verde_perto/pages/registerdetails_page.dart';
+import 'package:verde_perto/pages/reports_page.dart';
 import 'package:verde_perto/theme/theme.dart';
 import 'package:verde_perto/widgets/navigation_home.dart';
 
@@ -17,7 +19,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
     super.initState();
     Future.delayed(Duration(seconds: splashScreenTime), () async {
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-        return const NavigationHome();
+        return const RegisterDetailsPage();
       }));
     });
   }
