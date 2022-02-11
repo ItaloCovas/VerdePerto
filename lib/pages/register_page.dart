@@ -232,27 +232,24 @@ class _RegisterPageState extends State<RegisterPage> {
                       height: 10,
                     ),
                     Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-                      Expanded(
-                        flex: 5,
-                        child: Container(
-                          padding: const EdgeInsets.only(left: 8),
-                          height: 139,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: const TextField(
-                            cursorColor: primaryGreen,
-                            style: TextStyle(fontSize: 13),
-                            decoration: InputDecoration(
-                                contentPadding:
-                                    EdgeInsets.only(bottom: 9, left: 3),
-                                border: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                                hintText:
-                                    'Ex.: Queimada em parque da área urbana, ocasioanada por rompimento de cabo elétrico da companhia enérgetica...',
-                                fillColor: Colors.white),
-                          ),
+                      Container(
+                        padding: const EdgeInsets.only(left: 8),
+                        height: 139,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: const TextField(
+                          cursorColor: primaryGreen,
+                          style: TextStyle(fontSize: 13),
+                          decoration: InputDecoration(
+                              contentPadding:
+                                  EdgeInsets.only(bottom: 9, left: 3),
+                              border: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              hintText:
+                                  'Ex.: Queimada em parque da área urbana, ocasioanada por rompimento de cabo elétrico da companhia enérgetica...',
+                              fillColor: Colors.white),
                         ),
                       ),
                     ]),

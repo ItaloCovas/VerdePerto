@@ -2,7 +2,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:verde_perto/pages/home_page.dart';
+import 'package:verde_perto/pages/register_page.dart';
 import 'package:verde_perto/theme/theme.dart';
+import 'package:verde_perto/widgets/navigation_home.dart';
 
 class ReportsPage extends StatefulWidget {
   ReportsPage({Key? key}) : super(key: key);
@@ -53,7 +55,7 @@ class _ReportsPageState extends State<ReportsPage> {
                     SizedBox(
                       height: 10,
                     ),
-                    Text(
+                    const Text(
                       'Consulte aqui as ocorrências já registradas por nossos usuários.',
                       textAlign: TextAlign.start,
                       style: TextStyle(fontSize: 14),
@@ -126,7 +128,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                         SizedBox(
                                           width: 12,
                                         ),
-                                        Expanded(
+                                        const Expanded(
                                           child: Text(
                                             'Incêndio/Queimadas_BeloHorizonte',
                                             style: TextStyle(fontSize: 12),
@@ -155,17 +157,16 @@ class _ReportsPageState extends State<ReportsPage> {
                               style: const TextStyle(
                                   color: primaryGreen,
                                   fontSize: 16,
-                                  decoration: TextDecoration.underline,
                                   fontWeight: FontWeight.bold),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
                                   Navigator.pushReplacement(context,
                                       MaterialPageRoute(builder: (context) {
-                                    return HomePage();
+                                    return RegisterPage();
                                   }));
                                 }),
                         ])),
-                    SizedBox(
+                    const SizedBox(
                       height: 45,
                     )
                   ],

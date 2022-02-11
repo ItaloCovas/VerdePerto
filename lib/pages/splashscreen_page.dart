@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:verde_perto/theme/theme.dart';
 import 'package:verde_perto/widgets/navigation_home.dart';
-import 'package:simple_shadow/simple_shadow.dart';
 
 class SplashScreenPage extends StatefulWidget {
   const SplashScreenPage({Key? key}) : super(key: key);
@@ -18,7 +17,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
     super.initState();
     Future.delayed(Duration(seconds: splashScreenTime), () async {
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-        return NavigationHome();
+        return const NavigationHome();
       }));
     });
   }
@@ -37,10 +36,10 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 60.0),
+            const Padding(
+              padding: EdgeInsets.only(bottom: 60.0),
               child: Center(
-                child: const Text("Bem-vindo ao",
+                child: Text("Bem-vindo ao",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 23,
