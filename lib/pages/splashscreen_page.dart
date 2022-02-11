@@ -11,7 +11,7 @@ class SplashScreenPage extends StatefulWidget {
 }
 
 class _SplashScreenPageState extends State<SplashScreenPage> {
-  int splashScreenTime = 1;
+  int splashScreenTime = 2000;
 
   @override
   void initState() {
@@ -37,42 +37,24 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text("Bem-vindo",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontFamily: 'Cabrito',
-                    fontWeight: FontWeight.w700,
-                    shadows: [
-                      Shadow(
-                          color: Colors.black,
-                          offset: Offset(6, 6),
-                          blurRadius: 7),
-                    ])),
-            const SizedBox(height: 10),
-            const Text("ao",
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  shadows: [
-                    Shadow(
-                        color: Colors.black,
-                        offset: Offset(6, 6),
-                        blurRadius: 7),
-                  ],
-                  color: Colors.white,
-                  fontSize: 25,
-                )),
-            SimpleShadow(
-              child: Image.asset(
-                'assets/images/logo_splash.png',
-                height: 300,
+            Padding(
+              padding: const EdgeInsets.only(bottom: 60.0),
+              child: Center(
+                child: const Text("Bem-vindo ao",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontFamily: 'Cabrito',
+                    )),
               ),
-              opacity: 0.7, // Default: 0.5
-              color: Colors.black, // Default: Black
-              offset: Offset(6, 7), // Default: Offset(2, 2)
-              sigma: 1.3,
             ),
             const SizedBox(height: 10),
+            Image.asset(
+              'assets/images/logo_splash.png',
+              height: 300,
+              alignment: Alignment.topCenter,
+            ),
+            const SizedBox(height: 120),
             const CircularProgressIndicator(color: Colors.white),
           ],
         ),
