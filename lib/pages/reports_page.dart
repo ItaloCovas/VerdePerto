@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:verde_perto/pages/home_page.dart';
 import 'package:verde_perto/theme/theme.dart';
 
@@ -98,7 +99,7 @@ class _ReportsPageState extends State<ReportsPage> {
                       padding: const EdgeInsets.only(top: 10),
                       child: ListView.builder(
                           shrinkWrap: true,
-                          itemCount: 6,
+                          itemCount: 15,
                           scrollDirection: Axis.vertical,
                           itemBuilder: (ctx, index) {
                             return Card(

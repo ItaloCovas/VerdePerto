@@ -60,7 +60,6 @@ class FinishedPage extends StatelessWidget {
                       style: const TextStyle(
                           color: primaryGreen,
                           fontSize: 16,
-                          decoration: TextDecoration.underline,
                           fontWeight: FontWeight.bold),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {

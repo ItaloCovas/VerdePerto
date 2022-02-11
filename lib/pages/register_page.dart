@@ -184,7 +184,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       height: 10,
                     ),
                     Flexible(
-                      flex: 6,
+                      flex: 5,
                       child: Container(
                         padding: const EdgeInsets.only(left: 8),
                         height: 40,

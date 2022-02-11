@@ -11,7 +11,7 @@ class SplashScreenPage extends StatefulWidget {
 }
 
 class _SplashScreenPageState extends State<SplashScreenPage> {
-  int splashScreenTime = 2000;
+  int splashScreenTime = 5;
 
   @override
   void initState() {
@@ -43,7 +43,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
                 child: const Text("Bem-vindo ao",
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 20,
+                      fontSize: 23,
                       fontFamily: 'Cabrito',
                     )),
               ),
@@ -51,7 +51,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
             const SizedBox(height: 10),
             Image.asset(
               'assets/images/logo_splash.png',
-              height: 300,
+              height: 290,
               alignment: Alignment.topCenter,
             ),
             const SizedBox(height: 120),
