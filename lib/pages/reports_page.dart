@@ -99,48 +99,51 @@ class _ReportsPageState extends State<ReportsPage> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 10),
-                      child: ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: 15,
-                          scrollDirection: Axis.vertical,
-                          itemBuilder: (ctx, index) {
-                            return Card(
-                              child: Container(
-                                width: double.infinity,
-                                height: 60,
-                                decoration: BoxDecoration(
-                                    color: primaryGrey.withOpacity(0.3),
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.all(5.0),
-                                          child: ClipOval(
-                                            child: Image.network(
-                                              'https://th.bing.com/th/id/R.785dff7556ca090d9e863ffc555bbb56?rik=SjGFefW1wxIFFg&riu=http%3a%2f%2fwww.ambientelegal.com.br%2fwp-content%2fuploads%2famazonia41.jpg&ehk=P2XC5ja3GeA2Rw1QR9AJ3zSj1bkWrySaThzTf39s%2fmg%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1',
-                                              width: 50,
-                                              height: 50,
+                      child: Flexible(
+                        child: ListView.builder(
+                            physics: NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: 15,
+                            scrollDirection: Axis.vertical,
+                            itemBuilder: (ctx, index) {
+                              return Card(
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 60,
+                                  decoration: BoxDecoration(
+                                      color: primaryGrey.withOpacity(0.3),
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(5.0),
+                                            child: ClipOval(
+                                              child: Image.network(
+                                                'https://th.bing.com/th/id/R.785dff7556ca090d9e863ffc555bbb56?rik=SjGFefW1wxIFFg&riu=http%3a%2f%2fwww.ambientelegal.com.br%2fwp-content%2fuploads%2famazonia41.jpg&ehk=P2XC5ja3GeA2Rw1QR9AJ3zSj1bkWrySaThzTf39s%2fmg%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1',
+                                                width: 50,
+                                                height: 50,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        SizedBox(
-                                          width: 12,
-                                        ),
-                                        const Expanded(
-                                          child: Text(
-                                            'Incêndio/Queimadas_BeloHorizonte',
-                                            style: TextStyle(fontSize: 12),
+                                          SizedBox(
+                                            width: 12,
                                           ),
-                                        )
-                                      ],
-                                    )
-                                  ],
+                                          const Expanded(
+                                            child: Text(
+                                              'Incêndio/Queimadas_BeloHorizonte',
+                                              style: TextStyle(fontSize: 12),
+                                            ),
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            );
-                          }),
+                              );
+                            }),
+                      ),
                     ),
                     SizedBox(
                       height: 15,

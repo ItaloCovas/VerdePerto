@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:verde_perto/pages/home_page.dart';
+import 'package:verde_perto/pages/register_page.dart';
 
 class RegisterDetailsPage extends StatefulWidget {
   const RegisterDetailsPage({Key? key}) : super(key: key);
@@ -23,10 +25,17 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                     'assets/images/verde8.png',
                     width: 95,
                   ),
-                  Icon(
-                    Icons.close,
-                    size: 30,
-                  )
+                  IconButton(
+                      onPressed: () {
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) {
+                          return HomePage();
+                        }));
+                      },
+                      icon: Icon(
+                        Icons.close_rounded,
+                        size: 30,
+                      ))
                 ],
               ),
             ),
