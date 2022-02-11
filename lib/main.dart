@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:verde_perto/controller/image_store.dart';
 import 'package:verde_perto/pages/finished_page.dart';
+import 'package:verde_perto/pages/home_page.dart';
 import 'package:verde_perto/pages/splashscreen_page.dart';
 
 void main() {

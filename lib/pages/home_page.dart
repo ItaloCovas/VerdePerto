@@ -20,13 +20,17 @@ class _HomePageState extends State<HomePage> {
       child: SafeArea(
         child: Column(
           children: [
-            Row(
-              children: [
-                Image.asset(
-                  'assets/images/logo.png',
-                  height: 70,
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.only(left: 31),
+              child: Row(
+                children: [
+                  Image.asset(
+                    'assets/images/verde8.png',
+                    height: 70,
+                    width: 80,
+                  ),
+                ],
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 35, right: 35),
