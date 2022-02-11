@@ -28,13 +28,14 @@ abstract class _ImageStoreBase with Store {
   }
 
   @action
-  Future pickImage(ImageSource source) async {
+  Future pickImage(ImageSource source, BuildContext context) async {
     try {
       final image = await ImagePicker().pickImage(source: source);
       if (image == null) return;
       //final imageTemporary = File(image.path);
       final imagePermanent = await saveImagePermanently(image.path);
       this.image = imagePermanent;
+      Navigator.of(context).pop();
     } catch (e) {
       print('Failed to pick image: $e');
     }
