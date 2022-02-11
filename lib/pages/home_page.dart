@@ -24,8 +24,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Image.asset(
                     'assets/images/verde8.png',
-                    height: 70,
-                    width: 80,
+                    width: 95,
                   ),
                 ],
               ),

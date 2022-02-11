@@ -22,6 +22,7 @@ class _RegisterPageState extends State<RegisterPage> {
     'RJ',
     'SP',
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,12 +32,17 @@ class _RegisterPageState extends State<RegisterPage> {
         child: SafeArea(
           child: Column(
             children: [
-              Row(children: [
-                Image.asset(
-                  'assets/images/logo.png',
-                  height: 70,
+              Padding(
+                padding: const EdgeInsets.only(left: 28),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'assets/images/verde8.png',
+                      width: 95,
+                    ),
+                  ],
                 ),
-              ]),
+              ),
               Padding(
                 padding: const EdgeInsets.only(left: 32, right: 30),
                 child: Column(
@@ -165,20 +171,20 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Row(
-                      children: [
+                      children: const [
                         Expanded(
                             flex: 5, child: Text('Tipo de ocorrência(*):')),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Flexible(
-                      flex: 5,
+                      flex: 6,
                       child: Container(
                         padding: const EdgeInsets.only(left: 8),
                         height: 40,
@@ -213,6 +219,141 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ),
                     ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Row(
+                      children: const [
+                        Expanded(
+                            flex: 5, child: Text('Descrição da Ocorrência:')),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                      Expanded(
+                        flex: 5,
+                        child: Container(
+                          padding: const EdgeInsets.only(left: 8),
+                          height: 139,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: const TextField(
+                            cursorColor: primaryGreen,
+                            style: TextStyle(fontSize: 13),
+                            decoration: InputDecoration(
+                                contentPadding:
+                                    EdgeInsets.only(bottom: 9, left: 3),
+                                border: InputBorder.none,
+                                focusedBorder: InputBorder.none,
+                                hintText:
+                                    'Ex.: Queimada em parque da área urbana, ocasioanada por rompimento de cabo elétrico da companhia enérgetica...',
+                                fillColor: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ]),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                      Expanded(
+                        flex: 5,
+                        child: Container(
+                          padding: const EdgeInsets.only(left: 8),
+                          height: 301,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                        ),
+                      ),
+                    ]),
+                    SizedBox(
+                      height: 7,
+                    ),
+                    Row(
+                      children: const [
+                        Expanded(
+                          child: Text(
+                            'Coordenadas: -15.742062189730785, -47.76337011967098',
+                            style:
+                                TextStyle(fontSize: 12, color: Colors.black54),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      children: const [
+                        Expanded(
+                          child: Text(
+                            'Data: 07.02.2022',
+                            style:
+                                TextStyle(fontSize: 12, color: Colors.black54),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      children: const [
+                        Expanded(
+                          child: Text(
+                            'Hora: 10:03',
+                            style:
+                                TextStyle(fontSize: 12, color: Colors.black54),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 35,
+                    ),
+                    Row(children: [
+                      Expanded(
+                        flex: 5,
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 20.0),
+                          child: Container(
+                            height: 50.0,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(25.0),
+                            ),
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          primaryGreen),
+                                  shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ))),
+                              child: Text(
+                                "Enviar ocorrência".toUpperCase(),
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ]),
+                    SizedBox(
+                      height: 40,
+                    )
                   ],
                 ),
               )
