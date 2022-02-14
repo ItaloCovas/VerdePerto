@@ -41,6 +41,8 @@ dependencies:
   get_it: ^7.2.0
   path_provider: ^2.0.8
   simple_shadow: ^0.3.0
+  geolocator: ^8.2.0
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
