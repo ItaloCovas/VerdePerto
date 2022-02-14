@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:verde_perto/pages/home_page.dart';
 import 'package:verde_perto/pages/register_page.dart';
+import 'package:verde_perto/widgets/navigation_home.dart';
 
 class RegisterDetailsPage extends StatefulWidget {
   const RegisterDetailsPage({Key? key}) : super(key: key);
@@ -29,7 +30,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                       onPressed: () {
                         Navigator.pushReplacement(context,
                             MaterialPageRoute(builder: (context) {
-                          return HomePage();
+                          return NavigationHome();
                         }));
                       },
                       icon: Icon(
@@ -233,7 +234,9 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                         flex: 6,
                         child: Text(
                           'Queimada em área urbana, ocasioanada por rompimento de cabo elétrico da companhia enérgetica...',
-                          style: TextStyle(fontSize: 14),
+                          style: TextStyle(
+                            fontSize: 14,
+                          ),
                         ),
                       ),
                     ],

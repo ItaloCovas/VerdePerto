@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.verde_perto">
    <application
-        android:label="verde_perto"
+        android:label="VerdePerto"
         android:name="${applicationName}"       
         android:requestLegacyExternalStorage="true"
         android:icon="@mipmap/ic_launcher">

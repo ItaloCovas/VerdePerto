@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:verde_perto/controller/image_store.dart';
+import 'package:verde_perto/pages/forms_page.dart';
 import 'package:verde_perto/pages/register_page.dart';
 import 'package:verde_perto/pages/registerdetails_page.dart';
 import 'package:verde_perto/pages/splashscreen_page.dart';
@@ -22,10 +23,10 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
         fontFamily: 'Poppins',
       ),
-      home: SplashScreenPage(),
+      home: NavigationHome(),
     );
   }
 }

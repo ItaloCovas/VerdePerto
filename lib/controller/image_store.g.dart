@@ -33,22 +33,6 @@ mixin _$ImageStore on _ImageStoreBase, Store {
         .run(() => super.getImagefromcamera());
   }
 
-  final _$pickImageAsyncAction = AsyncAction('_ImageStoreBase.pickImage');
-
-  @override
-  Future<dynamic> pickImage(ImageSource source, BuildContext context) {
-    return _$pickImageAsyncAction.run(() => super.pickImage(source, context));
-  }
-
-  final _$saveImagePermanentlyAsyncAction =
-      AsyncAction('_ImageStoreBase.saveImagePermanently');
-
-  @override
-  Future<File> saveImagePermanently(String imagePath) {
-    return _$saveImagePermanentlyAsyncAction
-        .run(() => super.saveImagePermanently(imagePath));
-  }
-
   @override
   String toString() {
     return '''
