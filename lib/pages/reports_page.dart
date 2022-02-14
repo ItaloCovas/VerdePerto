@@ -70,30 +70,40 @@ class _ReportsPageState extends State<ReportsPage> {
                         SizedBox(
                           width: 15,
                         ),
-                        DropdownButton<String>(
-                          borderRadius: BorderRadius.circular(10),
-                          value: dropdown,
-                          icon: const Icon(Icons.keyboard_arrow_down,
-                              color: Colors.grey),
-                          iconSize: 24,
-                          elevation: 14,
-                          style: const TextStyle(
-                              fontSize: 14, color: Colors.black),
-                          onChanged: (String? value) {
-                            setState(() {
-                              dropdown = value!;
-                            });
-                          },
-                          items: <String>[
-                            'Todos',
-                            'Mais recente',
-                            'Menos recente'
-                          ].map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(value),
-                            );
-                          }).toList(),
+                        Container(
+                          padding: const EdgeInsets.only(left: 8),
+                          height: 40,
+                          decoration: BoxDecoration(
+                            color: primaryGrey.withOpacity(0.3),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton<String>(
+                              borderRadius: BorderRadius.circular(10),
+                              value: dropdown,
+                              icon: const Icon(Icons.keyboard_arrow_down,
+                                  color: Colors.grey),
+                              iconSize: 24,
+                              elevation: 14,
+                              style: const TextStyle(
+                                  fontSize: 14, color: Colors.black),
+                              onChanged: (String? value) {
+                                setState(() {
+                                  dropdown = value!;
+                                });
+                              },
+                              items: <String>[
+                                'Todos',
+                                'Mais recente',
+                                'Menos recente'
+                              ].map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+                          ),
                         ),
                       ],
                     ),

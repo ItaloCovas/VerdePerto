@@ -18,7 +18,7 @@ class NavigationHome extends StatefulWidget {
 class _NavigationHomeState extends State<NavigationHome> {
   int selectedIndex = 0;
   final imageStore = GetIt.I.get<ImageStore>();
-  final List<Widget> pages = [const HomePage()];
+  final List<Widget> pages = [const HomePage(), ReportsPage()];
 
   @override
   Widget build(BuildContext context) {
