@@ -4,6 +4,8 @@ import 'package:get_it/get_it.dart';
 import 'package:verde_perto/controller/image_store.dart';
 import 'package:verde_perto/pages/finished_page.dart';
 import 'package:verde_perto/theme/theme.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:intl/intl.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -15,9 +17,31 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   final imageStore = GetIt.I.get<ImageStore>();
 
+  double? latitude;
+  double? longitude;
+
+  getPosition() async {
+    LocationPermission permission;
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+    }
+    Position position = await Geolocator.getCurrentPosition();
+    setState(() {
+      latitude = position.latitude;
+      longitude = position.longitude;
+    });
+  }
+
+  static DateTime data = DateTime.now();
+  String formattedDate = DateFormat("dd/MM/yyyy").format(data);
+  String formattedTime = DateFormat.Hm().format(data);
+
   String? dropdown;
   @override
   void initState() {
+    super.initState();
+    getPosition();
     dropdown = estados[0];
   }
 
@@ -275,12 +299,12 @@ class _RegisterPageState extends State<RegisterPage> {
                       height: 7,
                     ),
                     Row(
-                      children: const [
+                      children: [
                         Expanded(
                           child: Text(
-                            'Coordenadas: -15.742062189730785, -47.76337011967098',
-                            style:
-                                TextStyle(fontSize: 12, color: Colors.black54),
+                            'Coordenadas: $latitude, $longitude',
+                            style: const TextStyle(
+                                fontSize: 12, color: Colors.black54),
                           ),
                         ),
                       ],
@@ -289,12 +313,12 @@ class _RegisterPageState extends State<RegisterPage> {
                       height: 5,
                     ),
                     Row(
-                      children: const [
+                      children: [
                         Expanded(
                           child: Text(
-                            'Data: 07.02.2022',
-                            style:
-                                TextStyle(fontSize: 12, color: Colors.black54),
+                            'Data: $formattedDate',
+                            style: const TextStyle(
+                                fontSize: 12, color: Colors.black54),
                           ),
                         ),
                       ],
@@ -303,12 +327,12 @@ class _RegisterPageState extends State<RegisterPage> {
                       height: 5,
                     ),
                     Row(
-                      children: const [
+                      children: [
                         Expanded(
                           child: Text(
-                            'Hora: 10:03',
-                            style:
-                                TextStyle(fontSize: 12, color: Colors.black54),
+                            'Hora: $formattedTime',
+                            style: const TextStyle(
+                                fontSize: 12, color: Colors.black54),
                           ),
                         ),
                       ],
