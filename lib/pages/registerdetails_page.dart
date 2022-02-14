@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:verde_perto/pages/home_page.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:verde_perto/pages/register_page.dart';
 
 class RegisterDetailsPage extends StatefulWidget {

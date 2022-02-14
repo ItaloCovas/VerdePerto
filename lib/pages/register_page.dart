@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:verde_perto/controller/image_store.dart';
 import 'package:verde_perto/theme/theme.dart';
 
 class RegisterPage extends StatefulWidget {
-  RegisterPage({Key? key}) : super(key: key);
+  const RegisterPage({Key? key}) : super(key: key);
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final imageStore = GetIt.I.get<ImageStore>();
+
   String? dropdown;
   @override
   void initState() {
@@ -50,24 +54,25 @@ class _RegisterPageState extends State<RegisterPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Text(
+                    const Text(
                       'Faça a sua ocorrência',
                       style:
                           TextStyle(fontWeight: FontWeight.w700, fontSize: 22),
                       textAlign: TextAlign.start,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
-                    Text('Denunciante (caso queira anonimato, não preecher):'),
-                    SizedBox(
+                    const Text(
+                        'Denunciante (caso queira anonimato, não preecher):'),
+                    const SizedBox(
                       height: 10,
                     ),
                     Container(
-                      padding: EdgeInsets.only(left: 8),
+                      padding: const EdgeInsets.only(left: 8),
                       width: double.infinity,
                       height: 40,
                       decoration: BoxDecoration(
@@ -85,7 +90,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             fillColor: Colors.white),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Row(
@@ -99,7 +104,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             ))
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -108,7 +113,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         Expanded(
                           flex: 5,
                           child: Container(
-                            padding: EdgeInsets.only(left: 8),
+                            padding: const EdgeInsets.only(left: 8),
                             height: 40,
                             decoration: BoxDecoration(
                               color: Colors.white,
@@ -127,7 +132,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 8,
                         ),
                         Expanded(
@@ -253,7 +258,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ),
                     ]),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Row(mainAxisAlignment: MainAxisAlignment.start, children: [
@@ -269,7 +274,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ),
                     ]),
-                    SizedBox(
+                    const SizedBox(
                       height: 7,
                     ),
                     Row(
@@ -283,7 +288,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                     Row(
@@ -297,7 +302,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                     Row(
@@ -311,7 +316,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 35,
                     ),
                     Row(children: [
@@ -338,7 +343,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   ))),
                               child: Text(
                                 "Enviar ocorrência".toUpperCase(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.w300),
@@ -348,7 +353,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ),
                     ]),
-                    SizedBox(
+                    const SizedBox(
                       height: 40,
                     )
                   ],

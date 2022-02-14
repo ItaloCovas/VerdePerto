@@ -8,7 +8,7 @@ import 'package:verde_perto/controller/image_store.dart';
 import 'package:verde_perto/theme/theme.dart';
 
 class FormsPage extends StatefulWidget {
-  FormsPage({Key? key}) : super(key: key);
+  const FormsPage({Key? key}) : super(key: key);
 
   @override
   State<FormsPage> createState() => _FormsPageState();
@@ -20,11 +20,11 @@ class _FormsPageState extends State<FormsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: imageStore.image == null
-            ? Text('Não há nenhuma imagem selecionada')
-            : Image.file(imageStore.image!),
-      ),
+      body: Center(child: Observer(builder: (_) {
+        return imageStore.image == null
+            ? const Text('Não há nenhuma imagem selecionada')
+            : Image.file(imageStore.image!);
+      })),
     );
   }
 }

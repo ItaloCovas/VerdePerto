@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
         fontFamily: 'Poppins',
       ),
-      home: NavigationHome(),
+      home: const RegisterPage(),
     );
   }
 }
