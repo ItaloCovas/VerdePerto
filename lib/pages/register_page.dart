@@ -19,7 +19,25 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   void initState() {
     dropdown = estados[0];
+    dropdown2 = ocorrencias[0];
   }
+
+  String? dropdown2;
+
+  List ocorrencias = [
+    'Escolha...',
+    'Carro Abandonado',
+    'Maus-Tratos aos Animais',
+    'Danos ao patrimônico público',
+    'Descarte irregular lixo',
+    'Desmatamento/Poda ilegal',
+    'Destruição de morros',
+    'Extração mineral ilegal',
+    'Incêndio/Queimadas',
+    'Pesca ilegal',
+    'Poluição dos recuros hídricos',
+    'Poluição dos solos',
+  ];
 
   List estados = [
     'Informe seu estado...',
@@ -192,13 +210,14 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: Container(
                         padding: const EdgeInsets.only(left: 8),
                         height: 40,
+                        width: 300,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton<String>(
-                            value: dropdown,
+                            value: dropdown2,
                             borderRadius: BorderRadius.circular(10),
                             icon: const Icon(Icons.arrow_drop_down_rounded,
                                 color: primaryGreen),
@@ -208,10 +227,10 @@ class _RegisterPageState extends State<RegisterPage> {
                                 fontSize: 12, color: primaryGrey),
                             onChanged: (value) {
                               setState(() {
-                                dropdown = value!;
+                                dropdown2 = value!;
                               });
                             },
-                            items: estados.map(
+                            items: ocorrencias.map(
                               (item) {
                                 return DropdownMenuItem<String>(
                                   value: item,
