@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:verde_perto/controller/image_store.dart';
-import 'package:verde_perto/pages/forms_page.dart';
 
 import 'package:verde_perto/pages/home_page.dart';
+import 'package:verde_perto/pages/register_page.dart';
 import 'package:verde_perto/pages/reports_page.dart';
 import 'package:verde_perto/theme/theme.dart';
 
@@ -18,7 +18,7 @@ class NavigationHome extends StatefulWidget {
 class _NavigationHomeState extends State<NavigationHome> {
   int selectedIndex = 0;
   final imageStore = GetIt.I.get<ImageStore>();
-  final List<Widget> pages = [const HomePage(), FormsPage()];
+  final List<Widget> pages = [const HomePage()];
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +27,8 @@ class _NavigationHomeState extends State<NavigationHome> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           imageStore.getImagefromcamera();
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => FormsPage()));
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => const RegisterPage()));
         },
         child: const Icon(
           Icons.add_a_photo_outlined,

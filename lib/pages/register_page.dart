@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:verde_perto/controller/image_store.dart';
 import 'package:verde_perto/pages/finished_page.dart';
@@ -262,16 +263,13 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                       Expanded(
-                        flex: 1,
-                        child: Container(
-                          padding: const EdgeInsets.only(left: 8),
-                          height: 301,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                        ),
-                      ),
+                          flex: 1,
+                          child: Observer(builder: (_) {
+                            return imageStore.image == null
+                                ? const Text(
+                                    'Não há nenhuma imagem selecionada')
+                                : Image.file(imageStore.image!);
+                          })),
                     ]),
                     const SizedBox(
                       height: 7,

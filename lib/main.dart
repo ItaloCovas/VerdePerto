@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:verde_perto/controller/image_store.dart';
-import 'package:verde_perto/pages/forms_page.dart';
 import 'package:verde_perto/pages/register_page.dart';
 import 'package:verde_perto/pages/registerdetails_page.dart';
 import 'package:verde_perto/pages/splashscreen_page.dart';
@@ -26,7 +25,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
         fontFamily: 'Poppins',
       ),
-      home: const RegisterPage(),
+      home: const SplashScreenPage(),
     );
   }
 }
