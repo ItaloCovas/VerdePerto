@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:verde_perto/pages/home_page.dart';
 import 'package:verde_perto/pages/register_page.dart';
-import 'package:verde_perto/widgets/navigation_home.dart';
 
 class RegisterDetailsPage extends StatefulWidget {
   const RegisterDetailsPage({Key? key}) : super(key: key);
@@ -30,10 +29,10 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                       onPressed: () {
                         Navigator.pushReplacement(context,
                             MaterialPageRoute(builder: (context) {
-                          return NavigationHome();
+                          return const HomePage();
                         }));
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.close_rounded,
                         size: 30,
                       ))
@@ -47,15 +46,15 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Text(
+                  const Text(
                     'Ocorrência #1',
                     style: TextStyle(fontWeight: FontWeight.w700, fontSize: 22),
                     textAlign: TextAlign.start,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Row(
@@ -74,11 +73,11 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Image.asset('assets/images/queimada.png'),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Row(
@@ -97,10 +96,11 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                       )
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
                       Flexible(
                         flex: 5,
@@ -122,7 +122,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Row(
@@ -141,7 +141,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Row(
@@ -160,7 +160,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Row(
@@ -179,7 +179,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Row(
@@ -198,7 +198,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Row(
@@ -217,15 +217,19 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
                       Text(
                         'Descrição: ',
                         style: TextStyle(
-                            fontWeight: FontWeight.w700, fontSize: 14),
+                          fontWeight: FontWeight.w700,
+                          fontSize: 14,
+                        ),
+                        textAlign: TextAlign.start,
                       ),
                       SizedBox(
                         width: 5,
@@ -233,15 +237,14 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                       Expanded(
                         flex: 6,
                         child: Text(
-                          'Queimada em área urbana, ocasioanada por rompimento de cabo elétrico da companhia enérgetica...',
-                          style: TextStyle(
-                            fontSize: 14,
-                          ),
+                          'Queimada em área urbana, ocasionada por rompimento de cabo elétrico da companhia enérgetica...',
+                          style: TextStyle(fontSize: 14),
+                          textAlign: TextAlign.left,
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                 ],
