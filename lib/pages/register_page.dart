@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:verde_perto/controller/image_store.dart';
+import 'package:verde_perto/pages/finished_page.dart';
 import 'package:verde_perto/theme/theme.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -237,24 +238,25 @@ class _RegisterPageState extends State<RegisterPage> {
                       height: 10,
                     ),
                     Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-                      Container(
-                        padding: const EdgeInsets.only(left: 8),
-                        height: 139,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: const TextField(
-                          cursorColor: primaryGreen,
-                          style: TextStyle(fontSize: 13),
-                          decoration: InputDecoration(
-                              contentPadding:
-                                  EdgeInsets.only(bottom: 9, left: 3),
-                              border: InputBorder.none,
-                              focusedBorder: InputBorder.none,
-                              hintText:
-                                  'Ex.: Queimada em parque da área urbana, ocasioanada por rompimento de cabo elétrico da companhia enérgetica...',
-                              fillColor: Colors.white),
+                      Expanded(
+                        child: Container(
+                          height: 139,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: const TextField(
+                            cursorColor: primaryGreen,
+                            style: TextStyle(fontSize: 13),
+                            decoration: InputDecoration(
+                                contentPadding:
+                                    EdgeInsets.only(bottom: 9, left: 3),
+                                border: InputBorder.none,
+                                focusedBorder: InputBorder.none,
+                                hintText:
+                                    'Ex.: Queimada em parque da área urbana, ocasioanada por rompimento de cabo elétrico da companhia enérgetica...',
+                                fillColor: Colors.white),
+                          ),
                         ),
                       ),
                     ]),
@@ -263,7 +265,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                       Expanded(
-                        flex: 5,
+                        flex: 1,
                         child: Container(
                           padding: const EdgeInsets.only(left: 8),
                           height: 301,
@@ -321,7 +323,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     Row(children: [
                       Expanded(
-                        flex: 5,
+                        flex: 1,
                         child: Padding(
                           padding: const EdgeInsets.only(bottom: 20.0),
                           child: Container(
@@ -331,7 +333,12 @@ class _RegisterPageState extends State<RegisterPage> {
                               borderRadius: BorderRadius.circular(25.0),
                             ),
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => FinishedPage()));
+                              },
                               style: ButtonStyle(
                                   backgroundColor:
                                       MaterialStateProperty.all<Color>(

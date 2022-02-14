@@ -1,8 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:verde_perto/pages/home_page.dart';
 import 'package:verde_perto/theme/theme.dart';
+import 'package:verde_perto/widgets/navigation_home.dart';
 
 class FinishedPage extends StatelessWidget {
   const FinishedPage({Key? key}) : super(key: key);
@@ -65,7 +64,7 @@ class FinishedPage extends StatelessWidget {
                         ..onTap = () {
                           Navigator.pushReplacement(context,
                               MaterialPageRoute(builder: (context) {
-                            return HomePage();
+                            return NavigationHome();
                           }));
                         }),
                 ]))
