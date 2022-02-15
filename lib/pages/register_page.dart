@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
-import 'package:verde_perto/api/cep_api.dart';
 import 'package:verde_perto/controller/cep_store.dart';
 import 'package:verde_perto/controller/image_store.dart';
+import 'package:verde_perto/controller/register_store.dart';
 import 'package:verde_perto/pages/finished_page.dart';
 import 'package:verde_perto/theme/theme.dart';
 import 'package:geolocator/geolocator.dart';
@@ -19,9 +19,10 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   final imageStore = GetIt.I.get<ImageStore>();
   final cepStore = GetIt.I.get<CepStore>();
+  final registerStore = GetIt.I.get<RegisterStore>();
 
-  final controllerCidade = TextEditingController();
-  final controllerEstado = TextEditingController();
+  final controllerCidade = TextEditingController(); // textfield
+
   double? latitude;
   double? longitude;
 
@@ -43,6 +44,7 @@ class _RegisterPageState extends State<RegisterPage> {
   String formattedTime = DateFormat.Hm().format(data);
 
   String? dropdown;
+
   @override
   void initState() {
     super.initState();
@@ -166,8 +168,8 @@ class _RegisterPageState extends State<RegisterPage> {
                                     cepStore.cepModel!.localidade.toString();
                               }
                               if (cepStore.cepModel != null) {
-                                controllerCidade.text =
-                                    cepStore.cepModel!.localidade.toString();
+                                registerStore.uf =
+                                    cepStore.cepModel!.uf.toString();
                               }
                             });
                           },
@@ -240,31 +242,32 @@ class _RegisterPageState extends State<RegisterPage> {
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(5),
                             ),
-                            child: DropdownButtonHideUnderline(
-                              child: DropdownButton<String>(
-                                value: dropdown,
-                                borderRadius: BorderRadius.circular(10),
-                                icon: const Icon(Icons.arrow_drop_down_rounded,
-                                    color: primaryGreen),
-                                iconSize: 22,
-                                elevation: 14,
-                                style: const TextStyle(
-                                    fontSize: 12, color: primaryGrey),
-                                onChanged: (value) {
-                                  setState(() {
-                                    dropdown = value!;
-                                  });
-                                },
-                                items: estados.map(
-                                  (item) {
-                                    return DropdownMenuItem<String>(
-                                      value: item,
-                                      child: Text(item),
-                                    );
+                            child: Observer(builder: (_) {
+                              return DropdownButtonHideUnderline(
+                                child: DropdownButton<String>(
+                                  value: registerStore.uf,
+                                  borderRadius: BorderRadius.circular(10),
+                                  icon: const Icon(
+                                      Icons.arrow_drop_down_rounded,
+                                      color: primaryGreen),
+                                  iconSize: 22,
+                                  elevation: 14,
+                                  style: const TextStyle(
+                                      fontSize: 12, color: primaryGrey),
+                                  onChanged: (value) {
+                                    registerStore.uf = value;
                                   },
-                                ).toList(),
-                              ),
-                            ),
+                                  items: estados.map(
+                                    (item) {
+                                      return DropdownMenuItem<String>(
+                                        value: item,
+                                        child: Text(item),
+                                      );
+                                    },
+                                  ).toList(),
+                                ),
+                              );
+                            }),
                           ),
                         ),
                       ],

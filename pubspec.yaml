@@ -44,6 +44,7 @@ dependencies:
   geolocator: ^8.2.0
   intl: ^0.17.0
   dio: ^4.0.4
+  dropdown_search: ^2.0.1
 
 dev_dependencies:
   flutter_test:

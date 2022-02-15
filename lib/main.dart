@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:verde_perto/controller/cep_store.dart';
 import 'package:verde_perto/controller/image_store.dart';
+import 'package:verde_perto/controller/register_store.dart';
 import 'package:verde_perto/pages/register_page.dart';
 import 'package:verde_perto/pages/splashscreen_page.dart';
 
@@ -9,6 +10,7 @@ void main() {
   GetIt getIt = GetIt.instance;
   getIt.registerLazySingleton<ImageStore>(() => ImageStore());
   getIt.registerLazySingleton<CepStore>(() => CepStore());
+  getIt.registerLazySingleton<RegisterStore>(() => RegisterStore());
   runApp(const MyApp());
 }
 
