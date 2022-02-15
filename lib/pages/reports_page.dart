@@ -1,10 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:verde_perto/pages/home_page.dart';
 import 'package:verde_perto/pages/register_page.dart';
 import 'package:verde_perto/theme/theme.dart';
-import 'package:verde_perto/widgets/navigation_home.dart';
 
 class ReportsPage extends StatefulWidget {
   ReportsPage({Key? key}) : super(key: key);

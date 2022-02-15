@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:verde_perto/controller/cep_store.dart';
 import 'package:verde_perto/controller/image_store.dart';
 import 'package:verde_perto/pages/register_page.dart';
-import 'package:verde_perto/pages/registerdetails_page.dart';
 import 'package:verde_perto/pages/splashscreen_page.dart';
-import 'package:verde_perto/widgets/navigation_home.dart';
 
 void main() {
-  runApp(const MyApp());
   GetIt getIt = GetIt.instance;
-  getIt.registerSingleton<ImageStore>(ImageStore());
+  getIt.registerLazySingleton<ImageStore>(() => ImageStore());
+  getIt.registerLazySingleton<CepStore>(() => CepStore());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
         fontFamily: 'Poppins',
       ),
-      home: const SplashScreenPage(),
+      home: const RegisterPage(),
     );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
+import 'package:verde_perto/api/cep_api.dart';
+import 'package:verde_perto/controller/cep_store.dart';
 import 'package:verde_perto/controller/image_store.dart';
 import 'package:verde_perto/pages/finished_page.dart';
 import 'package:verde_perto/theme/theme.dart';
@@ -16,7 +18,10 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final imageStore = GetIt.I.get<ImageStore>();
+  final cepStore = GetIt.I.get<CepStore>();
 
+  final controllerCidade = TextEditingController();
+  final controllerEstado = TextEditingController();
   double? latitude;
   double? longitude;
 
@@ -137,6 +142,50 @@ class _RegisterPageState extends State<RegisterPage> {
                     const SizedBox(
                       height: 15,
                     ),
+                    Text('CEP:'),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.only(left: 8),
+                      width: double.infinity,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Observer(builder: (_) {
+                        return TextField(
+                          keyboardType: TextInputType.number,
+                          onSubmitted: (text) async {
+                            cepStore.setCep(text);
+                            await cepStore.getCepAction();
+                            setState(() {
+                              if (cepStore.cepModel != null) {
+                                controllerCidade.text =
+                                    cepStore.cepModel!.localidade.toString();
+                              }
+                              if (cepStore.cepModel != null) {
+                                controllerCidade.text =
+                                    cepStore.cepModel!.localidade.toString();
+                              }
+                            });
+                          },
+                          cursorColor: primaryGreen,
+                          style: TextStyle(fontSize: 13),
+                          decoration: InputDecoration(
+                              contentPadding:
+                                  EdgeInsets.only(bottom: 9, left: 3),
+                              border: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              hintText: 'Informe seu CEP...',
+                              fillColor: Colors.white),
+                        );
+                      }),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     Row(
                       children: const [
                         Expanded(flex: 5, child: Text('Cidade:')),
@@ -163,17 +212,20 @@ class _RegisterPageState extends State<RegisterPage> {
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(5),
                             ),
-                            child: const TextField(
-                              cursorColor: primaryGreen,
-                              style: TextStyle(fontSize: 13),
-                              decoration: InputDecoration(
-                                  contentPadding:
-                                      EdgeInsets.only(bottom: 9, left: 3),
-                                  border: InputBorder.none,
-                                  focusedBorder: InputBorder.none,
-                                  hintText: 'Informe seu nome...',
-                                  fillColor: Colors.white),
-                            ),
+                            child: Observer(builder: (_) {
+                              return TextField(
+                                controller: controllerCidade,
+                                cursorColor: primaryGreen,
+                                style: TextStyle(fontSize: 13),
+                                decoration: const InputDecoration(
+                                    contentPadding:
+                                        EdgeInsets.only(bottom: 9, left: 3),
+                                    border: InputBorder.none,
+                                    focusedBorder: InputBorder.none,
+                                    hintText: 'Informe seu nome...',
+                                    fillColor: Colors.white),
+                              );
+                            }),
                           ),
                         ),
                         const SizedBox(
@@ -281,6 +333,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                       Expanded(
                         child: Container(
+                          padding: const EdgeInsets.only(left: 7),
                           height: 139,
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -323,7 +376,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           child: Text(
                             'Coordenadas: $latitude, $longitude',
                             style: const TextStyle(
-                                fontSize: 12, color: Colors.black54),
+                                fontSize: 14, color: Colors.black54),
                           ),
                         ),
                       ],
@@ -337,7 +390,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           child: Text(
                             'Data: $formattedDate',
                             style: const TextStyle(
-                                fontSize: 12, color: Colors.black54),
+                                fontSize: 14, color: Colors.black54),
                           ),
                         ),
                       ],
@@ -351,13 +404,13 @@ class _RegisterPageState extends State<RegisterPage> {
                           child: Text(
                             'Hora: $formattedTime',
                             style: const TextStyle(
-                                fontSize: 12, color: Colors.black54),
+                                fontSize: 14, color: Colors.black54),
                           ),
                         ),
                       ],
                     ),
                     const SizedBox(
-                      height: 35,
+                      height: 40,
                     ),
                     Row(children: [
                       Expanded(
@@ -400,7 +453,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ]),
                     const SizedBox(
-                      height: 40,
+                      height: 25,
                     )
                   ],
                 ),

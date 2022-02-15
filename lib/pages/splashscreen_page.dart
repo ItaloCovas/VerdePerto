@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:verde_perto/pages/home_page.dart';
-import 'package:verde_perto/pages/registerdetails_page.dart';
-import 'package:verde_perto/pages/reports_page.dart';
+
 import 'package:verde_perto/theme/theme.dart';
 import 'package:verde_perto/widgets/navigation_home.dart';
 

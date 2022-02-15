@@ -43,6 +43,7 @@ dependencies:
   simple_shadow: ^0.3.0
   geolocator: ^8.2.0
   intl: ^0.17.0
+  dio: ^4.0.4
 
 dev_dependencies:
   flutter_test:
