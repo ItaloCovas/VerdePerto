@@ -22,7 +22,8 @@ class _RegisterPageState extends State<RegisterPage> {
   final registerStore = GetIt.I.get<RegisterStore>();
 
   final controllerCidade = TextEditingController(); // textfield
-
+  final controllerBairro = TextEditingController(); //
+  final controllerRua = TextEditingController(); //
   String? dropdown;
 
   @override
@@ -124,7 +125,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     const SizedBox(
                       height: 15,
                     ),
-                    const Text('CEP:'),
+                    const Text('CEP (opcional):'),
                     const SizedBox(
                       height: 10,
                     ),
@@ -146,6 +147,14 @@ class _RegisterPageState extends State<RegisterPage> {
                               if (cepStore.cepModel != null) {
                                 controllerCidade.text =
                                     cepStore.cepModel!.localidade.toString();
+                              }
+                              if (cepStore.cepModel != null) {
+                                controllerBairro.text =
+                                    cepStore.cepModel!.bairro.toString();
+                              }
+                              if (cepStore.cepModel != null) {
+                                controllerRua.text =
+                                    cepStore.cepModel!.logradouro.toString();
                               }
                               if (cepStore.cepModel != null) {
                                 registerStore.uf =
@@ -195,7 +204,12 @@ class _RegisterPageState extends State<RegisterPage> {
                               borderRadius: BorderRadius.circular(5),
                             ),
                             child: Observer(builder: (_) {
-                              return TextField(
+                              return TextFormField(
+                                validator: (value) {
+                                  if (value!.isNotEmpty) {
+                                    return 'Esse campo não foi preenchido';
+                                  }
+                                },
                                 controller: controllerCidade,
                                 cursorColor: primaryGreen,
                                 style: const TextStyle(fontSize: 13),
@@ -204,7 +218,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                         EdgeInsets.only(bottom: 9, left: 3),
                                     border: InputBorder.none,
                                     focusedBorder: InputBorder.none,
-                                    hintText: 'Informe seu nome...',
+                                    hintText: 'Informe sua cidade...',
                                     fillColor: Colors.white),
                               );
                             }),
@@ -226,6 +240,10 @@ class _RegisterPageState extends State<RegisterPage> {
                               return DropdownButtonHideUnderline(
                                 child: DropdownButton<String>(
                                   value: registerStore.uf,
+                                  hint: Text(
+                                    'Informe seu estado...',
+                                    style: TextStyle(fontSize: 12.5),
+                                  ),
                                   borderRadius: BorderRadius.circular(10),
                                   icon: const Icon(
                                       Icons.arrow_drop_down_rounded,
@@ -246,6 +264,91 @@ class _RegisterPageState extends State<RegisterPage> {
                                     },
                                   ).toList(),
                                 ),
+                              );
+                            }),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Row(
+                      children: [
+                        Expanded(flex: 5, child: Text('Rua:')),
+                        Expanded(
+                            flex: 5,
+                            child: Padding(
+                              padding: EdgeInsets.only(left: 5),
+                              child: Text('Bairro:'),
+                            ))
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          flex: 5,
+                          child: Container(
+                            padding: const EdgeInsets.only(left: 8),
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Observer(builder: (_) {
+                              return TextFormField(
+                                validator: (value) {
+                                  if (value!.isNotEmpty) {
+                                    return 'Esse campo não foi preenchido';
+                                  }
+                                },
+                                controller: controllerRua,
+                                cursorColor: primaryGreen,
+                                style: const TextStyle(fontSize: 13),
+                                decoration: const InputDecoration(
+                                    contentPadding:
+                                        EdgeInsets.only(bottom: 9, left: 3),
+                                    border: InputBorder.none,
+                                    focusedBorder: InputBorder.none,
+                                    hintText: 'Informe sua rua...',
+                                    fillColor: Colors.white),
+                              );
+                            }),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        Expanded(
+                          flex: 5,
+                          child: Container(
+                            padding: const EdgeInsets.only(left: 8),
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Observer(builder: (_) {
+                              return TextFormField(
+                                validator: (value) {
+                                  if (value!.isNotEmpty) {
+                                    return 'Esse campo não foi preenchido';
+                                  }
+                                },
+                                controller: controllerBairro,
+                                cursorColor: primaryGreen,
+                                style: const TextStyle(fontSize: 13),
+                                decoration: const InputDecoration(
+                                    contentPadding:
+                                        EdgeInsets.only(bottom: 9, left: 3),
+                                    border: InputBorder.none,
+                                    focusedBorder: InputBorder.none,
+                                    hintText: 'Informe seu bairro...',
+                                    fillColor: Colors.white),
                               );
                             }),
                           ),
