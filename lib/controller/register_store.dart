@@ -37,12 +37,6 @@ abstract class _RegisterStoreBase with Store {
   void setDescricao(String value) => descricao = value;
 
   @observable
-  String? coordenadas;
-
-  @action
-  void setCoordenadas(String value) => coordenadas = value;
-
-  @observable
   double? latitude;
 
   @observable

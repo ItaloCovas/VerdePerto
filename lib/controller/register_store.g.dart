@@ -84,21 +84,6 @@ mixin _$RegisterStore on _RegisterStoreBase, Store {
     });
   }
 
-  final _$coordenadasAtom = Atom(name: '_RegisterStoreBase.coordenadas');
-
-  @override
-  String? get coordenadas {
-    _$coordenadasAtom.reportRead();
-    return super.coordenadas;
-  }
-
-  @override
-  set coordenadas(String? value) {
-    _$coordenadasAtom.reportWrite(value, super.coordenadas, () {
-      super.coordenadas = value;
-    });
-  }
-
   final _$latitudeAtom = Atom(name: '_RegisterStoreBase.latitude');
 
   @override
@@ -226,17 +211,6 @@ mixin _$RegisterStore on _RegisterStoreBase, Store {
   }
 
   @override
-  void setCoordenadas(String value) {
-    final _$actionInfo = _$_RegisterStoreBaseActionController.startAction(
-        name: '_RegisterStoreBase.setCoordenadas');
-    try {
-      return super.setCoordenadas(value);
-    } finally {
-      _$_RegisterStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     return '''
 denunciante: ${denunciante},
@@ -244,7 +218,6 @@ uf: ${uf},
 cidade: ${cidade},
 tipoOcorrencia: ${tipoOcorrencia},
 descricao: ${descricao},
-coordenadas: ${coordenadas},
 latitude: ${latitude},
 longitude: ${longitude},
 formattedDate: ${formattedDate},
