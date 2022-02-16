@@ -23,32 +23,12 @@ class _RegisterPageState extends State<RegisterPage> {
 
   final controllerCidade = TextEditingController(); // textfield
 
-  double? latitude;
-  double? longitude;
-
-  getPosition() async {
-    LocationPermission permission;
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-    }
-    Position position = await Geolocator.getCurrentPosition();
-    setState(() {
-      latitude = position.latitude;
-      longitude = position.longitude;
-    });
-  }
-
-  static DateTime data = DateTime.now();
-  String formattedDate = DateFormat("dd/MM/yyyy").format(data);
-  String formattedTime = DateFormat.Hm().format(data);
-
   String? dropdown;
 
   @override
   void initState() {
     super.initState();
-    getPosition();
+    registerStore.getPosition();
     dropdown = estados[0];
     dropdown2 = ocorrencias[0];
   }
@@ -144,7 +124,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     const SizedBox(
                       height: 15,
                     ),
-                    Text('CEP:'),
+                    const Text('CEP:'),
                     const SizedBox(
                       height: 10,
                     ),
@@ -174,8 +154,8 @@ class _RegisterPageState extends State<RegisterPage> {
                             });
                           },
                           cursorColor: primaryGreen,
-                          style: TextStyle(fontSize: 13),
-                          decoration: InputDecoration(
+                          style: const TextStyle(fontSize: 13),
+                          decoration: const InputDecoration(
                               contentPadding:
                                   EdgeInsets.only(bottom: 9, left: 3),
                               border: InputBorder.none,
@@ -218,7 +198,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               return TextField(
                                 controller: controllerCidade,
                                 cursorColor: primaryGreen,
-                                style: TextStyle(fontSize: 13),
+                                style: const TextStyle(fontSize: 13),
                                 decoration: const InputDecoration(
                                     contentPadding:
                                         EdgeInsets.only(bottom: 9, left: 3),
@@ -377,7 +357,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       children: [
                         Expanded(
                           child: Text(
-                            'Coordenadas: $latitude, $longitude',
+                            'Coordenadas: ${registerStore.latitude}, ${registerStore.longitude}',
                             style: const TextStyle(
                                 fontSize: 14, color: Colors.black54),
                           ),
@@ -391,7 +371,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       children: [
                         Expanded(
                           child: Text(
-                            'Data: $formattedDate',
+                            'Data: ${registerStore.formattedDate}',
                             style: const TextStyle(
                                 fontSize: 14, color: Colors.black54),
                           ),
@@ -405,7 +385,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       children: [
                         Expanded(
                           child: Text(
-                            'Hora: $formattedTime',
+                            'Hora: ${registerStore.formattedTime}',
                             style: const TextStyle(
                                 fontSize: 14, color: Colors.black54),
                           ),

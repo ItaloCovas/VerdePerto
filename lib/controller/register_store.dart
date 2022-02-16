@@ -1,3 +1,5 @@
+import 'package:geolocator/geolocator.dart';
+import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
 part 'register_store.g.dart';
 
@@ -39,4 +41,30 @@ abstract class _RegisterStoreBase with Store {
 
   @action
   void setCoordenadas(String value) => coordenadas = value;
+
+  @observable
+  double? latitude;
+
+  @observable
+  double? longitude;
+
+  @action
+  getPosition() async {
+    LocationPermission permission;
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+    }
+    Position position = await Geolocator.getCurrentPosition();
+    latitude = position.latitude;
+    longitude = position.longitude;
+  }
+
+  static DateTime data = DateTime.now();
+
+  @observable
+  String formattedDate = DateFormat("dd/MM/yyyy").format(data);
+
+  @observable
+  String formattedTime = DateFormat.Hm().format(data);
 }

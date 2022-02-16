@@ -99,6 +99,74 @@ mixin _$RegisterStore on _RegisterStoreBase, Store {
     });
   }
 
+  final _$latitudeAtom = Atom(name: '_RegisterStoreBase.latitude');
+
+  @override
+  double? get latitude {
+    _$latitudeAtom.reportRead();
+    return super.latitude;
+  }
+
+  @override
+  set latitude(double? value) {
+    _$latitudeAtom.reportWrite(value, super.latitude, () {
+      super.latitude = value;
+    });
+  }
+
+  final _$longitudeAtom = Atom(name: '_RegisterStoreBase.longitude');
+
+  @override
+  double? get longitude {
+    _$longitudeAtom.reportRead();
+    return super.longitude;
+  }
+
+  @override
+  set longitude(double? value) {
+    _$longitudeAtom.reportWrite(value, super.longitude, () {
+      super.longitude = value;
+    });
+  }
+
+  final _$formattedDateAtom = Atom(name: '_RegisterStoreBase.formattedDate');
+
+  @override
+  String get formattedDate {
+    _$formattedDateAtom.reportRead();
+    return super.formattedDate;
+  }
+
+  @override
+  set formattedDate(String value) {
+    _$formattedDateAtom.reportWrite(value, super.formattedDate, () {
+      super.formattedDate = value;
+    });
+  }
+
+  final _$formattedTimeAtom = Atom(name: '_RegisterStoreBase.formattedTime');
+
+  @override
+  String get formattedTime {
+    _$formattedTimeAtom.reportRead();
+    return super.formattedTime;
+  }
+
+  @override
+  set formattedTime(String value) {
+    _$formattedTimeAtom.reportWrite(value, super.formattedTime, () {
+      super.formattedTime = value;
+    });
+  }
+
+  final _$getPositionAsyncAction =
+      AsyncAction('_RegisterStoreBase.getPosition');
+
+  @override
+  Future getPosition() {
+    return _$getPositionAsyncAction.run(() => super.getPosition());
+  }
+
   final _$_RegisterStoreBaseActionController =
       ActionController(name: '_RegisterStoreBase');
 
@@ -176,7 +244,11 @@ uf: ${uf},
 cidade: ${cidade},
 tipoOcorrencia: ${tipoOcorrencia},
 descricao: ${descricao},
-coordenadas: ${coordenadas}
+coordenadas: ${coordenadas},
+latitude: ${latitude},
+longitude: ${longitude},
+formattedDate: ${formattedDate},
+formattedTime: ${formattedTime}
     ''';
   }
 }
