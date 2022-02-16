@@ -33,4 +33,10 @@ abstract class _RegisterStoreBase with Store {
 
   @action
   void setDescricao(String value) => descricao = value;
+
+  @observable
+  String? coordenadas;
+
+  @action
+  void setCoordenadas(String value) => coordenadas = value;
 }
