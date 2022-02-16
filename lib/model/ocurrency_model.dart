@@ -1,4 +1,4 @@
-class RegisterModel {
+class OcurrencyModel {
   String? denunciante;
   String? uf;
   String? cidade;
@@ -9,7 +9,7 @@ class RegisterModel {
   String? formattedDate;
   String? formattedTime;
 
-  RegisterModel(
+  OcurrencyModel(
       {this.denunciante,
       this.uf,
       this.cidade,
@@ -20,7 +20,7 @@ class RegisterModel {
       this.formattedDate,
       this.formattedTime});
 
-  RegisterModel.fromJson(Map<String, dynamic> json) {
+  OcurrencyModel.fromJson(Map<String, dynamic> json) {
     denunciante = json['denunciante'];
     uf = json['uf'];
     cidade = json['cidade'];

@@ -144,6 +144,36 @@ mixin _$RegisterStore on _RegisterStoreBase, Store {
     });
   }
 
+  final _$ocurrencyModelAtom = Atom(name: '_RegisterStoreBase.ocurrencyModel');
+
+  @override
+  OcurrencyModel get ocurrencyModel {
+    _$ocurrencyModelAtom.reportRead();
+    return super.ocurrencyModel;
+  }
+
+  @override
+  set ocurrencyModel(OcurrencyModel value) {
+    _$ocurrencyModelAtom.reportWrite(value, super.ocurrencyModel, () {
+      super.ocurrencyModel = value;
+    });
+  }
+
+  final _$ocorrenciaAtom = Atom(name: '_RegisterStoreBase.ocorrencia');
+
+  @override
+  ObservableList<OcurrencyModel>? get ocorrencia {
+    _$ocorrenciaAtom.reportRead();
+    return super.ocorrencia;
+  }
+
+  @override
+  set ocorrencia(ObservableList<OcurrencyModel>? value) {
+    _$ocorrenciaAtom.reportWrite(value, super.ocorrencia, () {
+      super.ocorrencia = value;
+    });
+  }
+
   final _$getPositionAsyncAction =
       AsyncAction('_RegisterStoreBase.getPosition');
 
@@ -211,6 +241,17 @@ mixin _$RegisterStore on _RegisterStoreBase, Store {
   }
 
   @override
+  dynamic getOcurrency() {
+    final _$actionInfo = _$_RegisterStoreBaseActionController.startAction(
+        name: '_RegisterStoreBase.getOcurrency');
+    try {
+      return super.getOcurrency();
+    } finally {
+      _$_RegisterStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 denunciante: ${denunciante},
@@ -221,7 +262,9 @@ descricao: ${descricao},
 latitude: ${latitude},
 longitude: ${longitude},
 formattedDate: ${formattedDate},
-formattedTime: ${formattedTime}
+formattedTime: ${formattedTime},
+ocurrencyModel: ${ocurrencyModel},
+ocorrencia: ${ocorrencia}
     ''';
   }
 }

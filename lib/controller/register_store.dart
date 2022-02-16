@@ -1,6 +1,7 @@
 import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
+import 'package:verde_perto/model/ocurrency_model.dart';
 part 'register_store.g.dart';
 
 class RegisterStore = _RegisterStoreBase with _$RegisterStore;
@@ -61,4 +62,16 @@ abstract class _RegisterStoreBase with Store {
 
   @observable
   String formattedTime = DateFormat.Hm().format(data);
+
+  @observable
+  var ocurrencyModel = OcurrencyModel();
+
+  @observable
+  ObservableList<OcurrencyModel>? ocorrencia =
+      ObservableList.of(<OcurrencyModel>[]);
+
+  @action
+  getOcurrency() {
+    ocorrencia?.add(ocurrencyModel);
+  }
 }
