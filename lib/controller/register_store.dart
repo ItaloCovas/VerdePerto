@@ -1,3 +1,7 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get_it/get_it.dart';
 import 'package:intl/intl.dart';
@@ -91,6 +95,9 @@ abstract class _RegisterStoreBase with Store {
 
   @action
   addOccurrence() {
+    final bytes = File(imageStore.image!.path).readAsBytesSync();
+    String base64Image = "data:image/png;base64," + base64Encode(bytes);
+    print(base64Image);
     OcurrencyModel newModel = OcurrencyModel(
       denunciante: denunciante,
       uf: uf,
@@ -98,7 +105,7 @@ abstract class _RegisterStoreBase with Store {
       bairro: bairro,
       rua: rua,
       cep: cep,
-      image: imageStore.image,
+      image: base64Image,
       tipoOcorrencia: tipoOcorrencia,
       descricao: descricao,
       latitude: latitude,

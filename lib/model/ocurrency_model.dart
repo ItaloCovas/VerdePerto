@@ -7,7 +7,7 @@ class OcurrencyModel {
   String? rua;
   String? bairro;
   int? cep;
-  File? image;
+  String? image;
   String? tipoOcorrencia;
   String? descricao;
   double? latitude;

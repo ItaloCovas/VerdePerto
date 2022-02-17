@@ -15,6 +15,10 @@ abstract class _ImageStoreBase with Store {
   Future getImagefromcamera() async {
     final photo = await picker.pickImage(source: ImageSource.camera);
 
-    image = File(photo!.path);
+    if (photo != null) {
+      image = File(photo.path);
+      return image;
+    }
+    return null;
   }
 }
