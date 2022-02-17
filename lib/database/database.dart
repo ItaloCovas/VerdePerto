@@ -11,20 +11,7 @@ class Database {
   Future<void> addOccurrence() {
     // Call the user's CollectionReference to add a new user
     return ocorrencias
-        .add({
-          'bairro': registerStore.bairro,
-          'cep': registerStore.cep,
-          'cidade': registerStore.cidade,
-          'denunciante': registerStore.denunciante,
-          'descricao': registerStore.descricao,
-          'formattedDate': registerStore.formattedDate,
-          'formattedTime': registerStore.formattedTime,
-          'latitude': registerStore.latitude,
-          'longitude': registerStore.longitude,
-          'rua': registerStore.rua,
-          'tipoOcorrencia': registerStore.tipoOcorrencia,
-          'uf': registerStore.uf,
-        })
+        .add({})
         .then((value) => print("Occurrence Added"))
         .catchError((error) => print("Failed to add occurrence: $error"));
   }

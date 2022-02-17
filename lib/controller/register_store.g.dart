@@ -189,21 +189,6 @@ mixin _$RegisterStore on _RegisterStoreBase, Store {
     });
   }
 
-  final _$ocurrencyModelAtom = Atom(name: '_RegisterStoreBase.ocurrencyModel');
-
-  @override
-  OcurrencyModel get ocurrencyModel {
-    _$ocurrencyModelAtom.reportRead();
-    return super.ocurrencyModel;
-  }
-
-  @override
-  set ocurrencyModel(OcurrencyModel value) {
-    _$ocurrencyModelAtom.reportWrite(value, super.ocurrencyModel, () {
-      super.ocurrencyModel = value;
-    });
-  }
-
   final _$databaseAtom = Atom(name: '_RegisterStoreBase.database');
 
   @override
@@ -344,7 +329,6 @@ latitude: ${latitude},
 longitude: ${longitude},
 formattedDate: ${formattedDate},
 formattedTime: ${formattedTime},
-ocurrencyModel: ${ocurrencyModel},
 database: ${database}
     ''';
   }
