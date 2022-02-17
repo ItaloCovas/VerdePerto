@@ -392,29 +392,32 @@ class _RegisterPageState extends State<RegisterPage> {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(5),
                         ),
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButton<String>(
-                            value: dropdown2,
-                            borderRadius: BorderRadius.circular(10),
-                            icon: const Icon(Icons.arrow_drop_down_rounded,
-                                color: primaryGreen),
-                            iconSize: 22,
-                            elevation: 14,
-                            style: const TextStyle(
-                                fontSize: 12, color: primaryGrey),
-                            onChanged: (value) {
-                              registerStore.setTipoOcorrencia(value.toString());
-                            },
-                            items: ocorrencias.map(
-                              (item) {
-                                return DropdownMenuItem<String>(
-                                  value: item,
-                                  child: Text(item),
-                                );
+                        child: Observer(builder: (_) {
+                          return DropdownButtonHideUnderline(
+                            child: DropdownButton<String>(
+                              value: dropdown2,
+                              borderRadius: BorderRadius.circular(10),
+                              icon: const Icon(Icons.arrow_drop_down_rounded,
+                                  color: primaryGreen),
+                              iconSize: 22,
+                              elevation: 14,
+                              style: const TextStyle(
+                                  fontSize: 12, color: primaryGrey),
+                              onChanged: (value) {
+                                registerStore
+                                    .setTipoOcorrencia(value.toString());
                               },
-                            ).toList(),
-                          ),
-                        ),
+                              items: ocorrencias.map(
+                                (item) {
+                                  return DropdownMenuItem<String>(
+                                    value: item,
+                                    child: Text(item),
+                                  );
+                                },
+                              ).toList(),
+                            ),
+                          );
+                        }),
                       ),
                     ),
                     const SizedBox(
