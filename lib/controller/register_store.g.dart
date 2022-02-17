@@ -54,6 +54,51 @@ mixin _$RegisterStore on _RegisterStoreBase, Store {
     });
   }
 
+  final _$cepAtom = Atom(name: '_RegisterStoreBase.cep');
+
+  @override
+  int? get cep {
+    _$cepAtom.reportRead();
+    return super.cep;
+  }
+
+  @override
+  set cep(int? value) {
+    _$cepAtom.reportWrite(value, super.cep, () {
+      super.cep = value;
+    });
+  }
+
+  final _$ruaAtom = Atom(name: '_RegisterStoreBase.rua');
+
+  @override
+  String? get rua {
+    _$ruaAtom.reportRead();
+    return super.rua;
+  }
+
+  @override
+  set rua(String? value) {
+    _$ruaAtom.reportWrite(value, super.rua, () {
+      super.rua = value;
+    });
+  }
+
+  final _$bairroAtom = Atom(name: '_RegisterStoreBase.bairro');
+
+  @override
+  String? get bairro {
+    _$bairroAtom.reportRead();
+    return super.bairro;
+  }
+
+  @override
+  set bairro(String? value) {
+    _$bairroAtom.reportWrite(value, super.bairro, () {
+      super.bairro = value;
+    });
+  }
+
   final _$tipoOcorrenciaAtom = Atom(name: '_RegisterStoreBase.tipoOcorrencia');
 
   @override
@@ -159,18 +204,18 @@ mixin _$RegisterStore on _RegisterStoreBase, Store {
     });
   }
 
-  final _$ocorrenciaAtom = Atom(name: '_RegisterStoreBase.ocorrencia');
+  final _$databaseAtom = Atom(name: '_RegisterStoreBase.database');
 
   @override
-  ObservableList<OcurrencyModel>? get ocorrencia {
-    _$ocorrenciaAtom.reportRead();
-    return super.ocorrencia;
+  Database get database {
+    _$databaseAtom.reportRead();
+    return super.database;
   }
 
   @override
-  set ocorrencia(ObservableList<OcurrencyModel>? value) {
-    _$ocorrenciaAtom.reportWrite(value, super.ocorrencia, () {
-      super.ocorrencia = value;
+  set database(Database value) {
+    _$databaseAtom.reportWrite(value, super.database, () {
+      super.database = value;
     });
   }
 
@@ -219,6 +264,39 @@ mixin _$RegisterStore on _RegisterStoreBase, Store {
   }
 
   @override
+  void setCep(int value) {
+    final _$actionInfo = _$_RegisterStoreBaseActionController.startAction(
+        name: '_RegisterStoreBase.setCep');
+    try {
+      return super.setCep(value);
+    } finally {
+      _$_RegisterStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setRua(String value) {
+    final _$actionInfo = _$_RegisterStoreBaseActionController.startAction(
+        name: '_RegisterStoreBase.setRua');
+    try {
+      return super.setRua(value);
+    } finally {
+      _$_RegisterStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setBairro(String value) {
+    final _$actionInfo = _$_RegisterStoreBaseActionController.startAction(
+        name: '_RegisterStoreBase.setBairro');
+    try {
+      return super.setBairro(value);
+    } finally {
+      _$_RegisterStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setTipoOcorrencia(String value) {
     final _$actionInfo = _$_RegisterStoreBaseActionController.startAction(
         name: '_RegisterStoreBase.setTipoOcorrencia');
@@ -241,11 +319,11 @@ mixin _$RegisterStore on _RegisterStoreBase, Store {
   }
 
   @override
-  dynamic getOcurrency() {
+  dynamic addOccurrence() {
     final _$actionInfo = _$_RegisterStoreBaseActionController.startAction(
-        name: '_RegisterStoreBase.getOcurrency');
+        name: '_RegisterStoreBase.addOccurrence');
     try {
-      return super.getOcurrency();
+      return super.addOccurrence();
     } finally {
       _$_RegisterStoreBaseActionController.endAction(_$actionInfo);
     }
@@ -257,6 +335,9 @@ mixin _$RegisterStore on _RegisterStoreBase, Store {
 denunciante: ${denunciante},
 uf: ${uf},
 cidade: ${cidade},
+cep: ${cep},
+rua: ${rua},
+bairro: ${bairro},
 tipoOcorrencia: ${tipoOcorrencia},
 descricao: ${descricao},
 latitude: ${latitude},
@@ -264,7 +345,7 @@ longitude: ${longitude},
 formattedDate: ${formattedDate},
 formattedTime: ${formattedTime},
 ocurrencyModel: ${ocurrencyModel},
-ocorrencia: ${ocorrencia}
+database: ${database}
     ''';
   }
 }

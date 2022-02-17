@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "128025602854",
+    "project_id": "verdeperto-19cb2",
+    "storage_bucket": "verdeperto-19cb2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:128025602854:android:9e5c47edb6d05cc34c2fe7",
+        "android_client_info": {
+          "package_name": "com.example.verde_perto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "128025602854-pnec856kqbc0ep334d1un5qdjsi9gocm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkDQZ9bHHNQHfhwiCz8EGEPrDdx_PrAwY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "128025602854-pnec856kqbc0ep334d1un5qdjsi9gocm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

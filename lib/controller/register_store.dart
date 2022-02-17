@@ -1,6 +1,7 @@
 import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
+import 'package:verde_perto/database/database.dart';
 import 'package:verde_perto/model/ocurrency_model.dart';
 part 'register_store.g.dart';
 
@@ -24,6 +25,24 @@ abstract class _RegisterStoreBase with Store {
 
   @action
   void setCidade(String value) => cidade = value;
+
+  @observable
+  int? cep;
+
+  @action
+  void setCep(int value) => cep = value;
+
+  @observable
+  String? rua;
+
+  @action
+  void setRua(String value) => rua = value;
+
+  @observable
+  String? bairro;
+
+  @action
+  void setBairro(String value) => bairro = value;
 
   @observable
   String? tipoOcorrencia;
@@ -67,11 +86,10 @@ abstract class _RegisterStoreBase with Store {
   var ocurrencyModel = OcurrencyModel();
 
   @observable
-  ObservableList<OcurrencyModel>? ocorrencia =
-      ObservableList.of(<OcurrencyModel>[]);
+  var database = Database();
 
   @action
-  getOcurrency() {
-    ocorrencia?.add(ocurrencyModel);
+  addOccurrence() {
+    database.addOccurrence();
   }
 }

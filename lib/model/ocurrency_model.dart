@@ -2,6 +2,9 @@ class OcurrencyModel {
   String? denunciante;
   String? uf;
   String? cidade;
+  String? rua;
+  String? bairro;
+  int? cep;
   String? tipoOcorrencia;
   String? descricao;
   double? latitude;
@@ -13,6 +16,9 @@ class OcurrencyModel {
       {this.denunciante,
       this.uf,
       this.cidade,
+      this.rua,
+      this.bairro,
+      this.cep,
       this.tipoOcorrencia,
       this.descricao,
       this.latitude,
@@ -24,6 +30,9 @@ class OcurrencyModel {
     denunciante = json['denunciante'];
     uf = json['uf'];
     cidade = json['cidade'];
+    rua = json['rua'];
+    bairro = json['bairro'];
+    cep = json['cep'];
     tipoOcorrencia = json['tipoOcorrencia'];
     descricao = json['descricao'];
     latitude = json['latitude'];
@@ -37,6 +46,9 @@ class OcurrencyModel {
     data['denunciante'] = denunciante;
     data['uf'] = uf;
     data['cidade'] = cidade;
+    data['rua'] = rua;
+    data['bairro'] = bairro;
+    data['cep'] = cep;
     data['tipoOcorrencia'] = tipoOcorrencia;
     data['descricao'] = descricao;
     data['latitude'] = latitude;

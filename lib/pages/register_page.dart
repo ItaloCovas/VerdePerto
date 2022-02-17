@@ -111,10 +111,13 @@ class _RegisterPageState extends State<RegisterPage> {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(5),
                       ),
-                      child: const TextField(
+                      child: TextField(
+                        onChanged: (text) {
+                          registerStore.setDenunciante(text);
+                        },
                         cursorColor: primaryGreen,
-                        style: TextStyle(fontSize: 13),
-                        decoration: InputDecoration(
+                        style: const TextStyle(fontSize: 13),
+                        decoration: const InputDecoration(
                             contentPadding: EdgeInsets.only(bottom: 9, left: 3),
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
@@ -161,6 +164,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                     cepStore.cepModel!.uf.toString();
                               }
                             });
+                          },
+                          onChanged: (text) {
+                            registerStore.setCep(int.parse(text));
                           },
                           cursorColor: primaryGreen,
                           style: const TextStyle(fontSize: 13),
@@ -210,6 +216,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                     return 'Esse campo não foi preenchido';
                                   }
                                 },
+                                onChanged: (text) {
+                                  registerStore.setCidade(text);
+                                },
                                 controller: controllerCidade,
                                 cursorColor: primaryGreen,
                                 style: const TextStyle(fontSize: 13),
@@ -240,7 +249,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               return DropdownButtonHideUnderline(
                                 child: DropdownButton<String>(
                                   value: registerStore.uf,
-                                  hint: Text(
+                                  hint: const Text(
                                     'Informe seu estado...',
                                     style: TextStyle(fontSize: 12.5),
                                   ),
@@ -253,7 +262,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   style: const TextStyle(
                                       fontSize: 12, color: primaryGrey),
                                   onChanged: (value) {
-                                    registerStore.uf = value;
+                                    registerStore.setUf(value.toString());
                                   },
                                   items: estados.map(
                                     (item) {
@@ -274,7 +283,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       height: 15,
                     ),
                     Row(
-                      children: [
+                      children: const [
                         Expanded(flex: 5, child: Text('Rua:')),
                         Expanded(
                             flex: 5,
@@ -305,6 +314,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                   if (value!.isNotEmpty) {
                                     return 'Esse campo não foi preenchido';
                                   }
+                                },
+                                onChanged: (text) {
+                                  registerStore.setRua(text);
                                 },
                                 controller: controllerRua,
                                 cursorColor: primaryGreen,
@@ -338,6 +350,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                   if (value!.isNotEmpty) {
                                     return 'Esse campo não foi preenchido';
                                   }
+                                },
+                                onChanged: (text) {
+                                  registerStore.setBairro(text);
                                 },
                                 controller: controllerBairro,
                                 cursorColor: primaryGreen,
@@ -388,9 +403,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             style: const TextStyle(
                                 fontSize: 12, color: primaryGrey),
                             onChanged: (value) {
-                              setState(() {
-                                dropdown2 = value!;
-                              });
+                              registerStore.setTipoOcorrencia(value.toString());
                             },
                             items: ocorrencias.map(
                               (item) {
@@ -425,10 +438,13 @@ class _RegisterPageState extends State<RegisterPage> {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(5),
                           ),
-                          child: const TextField(
+                          child: TextField(
                             cursorColor: primaryGreen,
-                            style: TextStyle(fontSize: 13),
-                            decoration: InputDecoration(
+                            style: const TextStyle(fontSize: 13),
+                            onChanged: (text) {
+                              registerStore.setDescricao(text);
+                            },
+                            decoration: const InputDecoration(
                                 contentPadding:
                                     EdgeInsets.only(bottom: 9, left: 3),
                                 border: InputBorder.none,

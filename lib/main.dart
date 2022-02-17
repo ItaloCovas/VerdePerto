@@ -5,8 +5,14 @@ import 'package:verde_perto/controller/image_store.dart';
 import 'package:verde_perto/controller/register_store.dart';
 import 'package:verde_perto/pages/register_page.dart';
 import 'package:verde_perto/pages/splashscreen_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   GetIt getIt = GetIt.instance;
   getIt.registerLazySingleton<ImageStore>(() => ImageStore());
   getIt.registerLazySingleton<CepStore>(() => CepStore());
