@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
         fontFamily: 'Poppins',
       ),
-      home: const RegisterPage(),
+      home: const SplashScreenPage(),
     );
   }
 }

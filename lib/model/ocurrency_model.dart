@@ -1,3 +1,5 @@
+import 'dart:io';
+
 class OcurrencyModel {
   String? denunciante;
   String? uf;
@@ -5,6 +7,7 @@ class OcurrencyModel {
   String? rua;
   String? bairro;
   int? cep;
+  File? image;
   String? tipoOcorrencia;
   String? descricao;
   double? latitude;
@@ -19,6 +22,7 @@ class OcurrencyModel {
       this.rua,
       this.bairro,
       this.cep,
+      this.image,
       this.tipoOcorrencia,
       this.descricao,
       this.latitude,
@@ -33,6 +37,7 @@ class OcurrencyModel {
     rua = json['rua'];
     bairro = json['bairro'];
     cep = json['cep'];
+    image = json['image'];
     tipoOcorrencia = json['tipoOcorrencia'];
     descricao = json['descricao'];
     latitude = json['latitude'];
@@ -49,6 +54,7 @@ class OcurrencyModel {
     data['rua'] = rua;
     data['bairro'] = bairro;
     data['cep'] = cep;
+    data['image'] = image;
     data['tipoOcorrencia'] = tipoOcorrencia;
     data['descricao'] = descricao;
     data['latitude'] = latitude;

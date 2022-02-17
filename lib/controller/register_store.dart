@@ -1,6 +1,8 @@
 import 'package:geolocator/geolocator.dart';
+import 'package:get_it/get_it.dart';
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
+import 'package:verde_perto/controller/image_store.dart';
 import 'package:verde_perto/database/database.dart';
 import 'package:verde_perto/model/ocurrency_model.dart';
 part 'register_store.g.dart';
@@ -8,6 +10,8 @@ part 'register_store.g.dart';
 class RegisterStore = _RegisterStoreBase with _$RegisterStore;
 
 abstract class _RegisterStoreBase with Store {
+  var imageStore = GetIt.I.get<ImageStore>();
+
   @observable
   String? denunciante;
 
@@ -94,6 +98,7 @@ abstract class _RegisterStoreBase with Store {
       bairro: bairro,
       rua: rua,
       cep: cep,
+      image: imageStore.image,
       tipoOcorrencia: tipoOcorrencia,
       descricao: descricao,
       latitude: latitude,
