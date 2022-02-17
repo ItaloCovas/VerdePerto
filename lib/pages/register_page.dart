@@ -24,7 +24,15 @@ class _RegisterPageState extends State<RegisterPage> {
   final controllerCidade = TextEditingController(); // textfield
   final controllerBairro = TextEditingController(); //
   final controllerRua = TextEditingController(); //
+  final controllerDescricao = TextEditingController(); //
+  final formKey = GlobalKey<FormState>();
+
   String? dropdown;
+
+  var cidade = '';
+  var descricao = '';
+  var tipodeOcorrencia = '';
+  var uf = '';
 
   @override
   void initState() {
@@ -66,107 +74,56 @@ class _RegisterPageState extends State<RegisterPage> {
       backgroundColor: secondaryGray,
       body: SingleChildScrollView(
         child: SafeArea(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 28),
-                child: Row(
-                  children: [
-                    Image.asset(
-                      'assets/images/verde8.png',
-                      width: 95,
-                    ),
-                  ],
+          child: Form(
+            key: formKey,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 28),
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        'assets/images/verde8.png',
+                        width: 95,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 32, right: 30),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Text(
-                      'Faça a sua ocorrência',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w700, fontSize: 22),
-                      textAlign: TextAlign.start,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const Text(
-                        'Denunciante (caso queira anonimato, não preecher):'),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      padding: const EdgeInsets.only(left: 8),
-                      width: double.infinity,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(5),
+                Padding(
+                  padding: const EdgeInsets.only(left: 32, right: 34),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const SizedBox(
+                        height: 10,
                       ),
-                      child: TextField(
-                        onChanged: (text) {
-                          registerStore.setDenunciante(text);
-                        },
-                        cursorColor: primaryGreen,
-                        style: const TextStyle(fontSize: 13),
-                        decoration: const InputDecoration(
-                            contentPadding: EdgeInsets.only(bottom: 9, left: 3),
-                            border: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                            hintText: 'Informe seu nome...',
-                            fillColor: Colors.white),
+                      const Text(
+                        'Faça a sua ocorrência',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w700, fontSize: 22),
+                        textAlign: TextAlign.start,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    const Text('CEP (opcional):'),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      padding: const EdgeInsets.only(left: 8),
-                      width: double.infinity,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(5),
+                      const SizedBox(
+                        height: 20,
                       ),
-                      child: Observer(builder: (_) {
-                        return TextField(
-                          keyboardType: TextInputType.number,
-                          onSubmitted: (text) async {
-                            cepStore.setCep(text);
-                            await cepStore.getCepAction();
-                            setState(() {
-                              if (cepStore.cepModel != null) {
-                                controllerCidade.text =
-                                    cepStore.cepModel!.localidade.toString();
-                              }
-                              if (cepStore.cepModel != null) {
-                                controllerBairro.text =
-                                    cepStore.cepModel!.bairro.toString();
-                              }
-                              if (cepStore.cepModel != null) {
-                                controllerRua.text =
-                                    cepStore.cepModel!.logradouro.toString();
-                              }
-                              if (cepStore.cepModel != null) {
-                                registerStore.uf =
-                                    cepStore.cepModel!.uf.toString();
-                              }
-                            });
-                          },
+                      const Text(
+                          'Denunciante (caso queira anonimato, não preecher):'),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        padding: const EdgeInsets.only(left: 8),
+                        width: double.infinity,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: TextField(
                           onChanged: (text) {
-                            registerStore.setCep(int.parse(text));
+                            registerStore.setDenunciante(text);
                           },
                           cursorColor: primaryGreen,
                           style: const TextStyle(fontSize: 13),
@@ -175,69 +132,83 @@ class _RegisterPageState extends State<RegisterPage> {
                                   EdgeInsets.only(bottom: 9, left: 3),
                               border: InputBorder.none,
                               focusedBorder: InputBorder.none,
-                              hintText: 'Informe seu CEP...',
+                              hintText: 'Informe seu nome...',
                               fillColor: Colors.white),
-                        );
-                      }),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      children: const [
-                        Expanded(flex: 5, child: Text('Cidade:')),
-                        Expanded(
-                            flex: 5,
-                            child: Padding(
-                              padding: EdgeInsets.only(left: 5),
-                              child: Text('UF:'),
-                            ))
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          flex: 5,
-                          child: Container(
-                            padding: const EdgeInsets.only(left: 8),
-                            height: 40,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Observer(builder: (_) {
-                              return TextFormField(
-                                validator: (value) {
-                                  if (value!.isNotEmpty) {
-                                    return 'Esse campo não foi preenchido';
-                                  }
-                                },
-                                onChanged: (text) {
-                                  registerStore.setCidade(text);
-                                },
-                                controller: controllerCidade,
-                                cursorColor: primaryGreen,
-                                style: const TextStyle(fontSize: 13),
-                                decoration: const InputDecoration(
-                                    contentPadding:
-                                        EdgeInsets.only(bottom: 9, left: 3),
-                                    border: InputBorder.none,
-                                    focusedBorder: InputBorder.none,
-                                    hintText: 'Informe sua cidade...',
-                                    fillColor: Colors.white),
-                              );
-                            }),
-                          ),
                         ),
-                        const SizedBox(
-                          width: 8,
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      const Text('CEP (opcional):'),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        padding: const EdgeInsets.only(left: 8),
+                        width: double.infinity,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
                         ),
-                        Observer(builder: (_) {
-                          return Expanded(
+                        child: Observer(builder: (_) {
+                          return TextField(
+                            keyboardType: TextInputType.number,
+                            onSubmitted: (text) async {
+                              cepStore.setCep(text);
+                              await cepStore.getCepAction();
+                              setState(() {
+                                if (cepStore.cepModel != null) {
+                                  controllerCidade.text =
+                                      cepStore.cepModel!.localidade.toString();
+                                }
+                                if (cepStore.cepModel != null) {
+                                  controllerBairro.text =
+                                      cepStore.cepModel!.bairro.toString();
+                                }
+                                if (cepStore.cepModel != null) {
+                                  controllerRua.text =
+                                      cepStore.cepModel!.logradouro.toString();
+                                }
+                                if (cepStore.cepModel != null) {
+                                  registerStore.uf =
+                                      cepStore.cepModel!.uf.toString();
+                                }
+                              });
+                            },
+                            cursorColor: primaryGreen,
+                            style: const TextStyle(fontSize: 13),
+                            decoration: const InputDecoration(
+                                contentPadding:
+                                    EdgeInsets.only(bottom: 9, left: 3),
+                                border: InputBorder.none,
+                                focusedBorder: InputBorder.none,
+                                hintText: 'Informe seu CEP...',
+                                fillColor: Colors.white),
+                          );
+                        }),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        children: const [
+                          Expanded(flex: 5, child: Text('Cidade:')),
+                          Expanded(
+                              flex: 5,
+                              child: Padding(
+                                padding: EdgeInsets.only(left: 5),
+                                child: Text('UF:'),
+                              ))
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Expanded(
                             flex: 5,
                             child: Container(
                               padding: const EdgeInsets.only(left: 8),
@@ -246,330 +217,349 @@ class _RegisterPageState extends State<RegisterPage> {
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(5),
                               ),
-                              child: DropdownButtonHideUnderline(
-                                child: DropdownButton<String>(
-                                  value: registerStore.uf,
-                                  hint: const Text(
-                                    'Informe seu estado...',
-                                    style: TextStyle(fontSize: 12.5),
-                                  ),
-                                  borderRadius: BorderRadius.circular(10),
-                                  icon: const Icon(
-                                      Icons.arrow_drop_down_rounded,
-                                      color: primaryGreen),
-                                  iconSize: 22,
-                                  elevation: 14,
-                                  style: const TextStyle(
-                                      fontSize: 12, color: primaryGrey),
-                                  onChanged: (value) {
-                                    setState(() {
-                                      registerStore.setUf(value.toString());
-                                    });
+                              child: Observer(builder: (_) {
+                                return TextFormField(
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Campo obrigatório!';
+                                    }
                                   },
-                                  items: estados.map(
-                                    (item) {
-                                      return DropdownMenuItem<String>(
-                                        value: item,
-                                        child: Text(item),
-                                      );
-                                    },
-                                  ).toList(),
-                                ),
-                              ),
+                                  onChanged: (text) {
+                                    registerStore.setCidade(text);
+                                  },
+                                  controller: controllerCidade,
+                                  cursorColor: primaryGreen,
+                                  style: const TextStyle(fontSize: 12),
+                                  decoration: const InputDecoration(
+                                      contentPadding:
+                                          EdgeInsets.only(bottom: 9, left: 3),
+                                      border: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      hintText: 'Informe sua cidade...',
+                                      fillColor: Colors.white),
+                                );
+                              }),
                             ),
-                          );
-                        }),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      children: const [
-                        Expanded(flex: 5, child: Text('Rua:')),
-                        Expanded(
+                          ),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          Expanded(
                             flex: 5,
-                            child: Padding(
-                              padding: EdgeInsets.only(left: 5),
-                              child: Text('Bairro:'),
-                            ))
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          flex: 5,
-                          child: Container(
-                            padding: const EdgeInsets.only(left: 8),
-                            height: 40,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Observer(builder: (_) {
-                              return TextFormField(
-                                validator: (value) {
-                                  if (value!.isNotEmpty) {
-                                    return 'Esse campo não foi preenchido';
-                                  }
-                                },
-                                onChanged: (text) {
-                                  registerStore.setRua(text);
-                                },
-                                controller: controllerRua,
-                                cursorColor: primaryGreen,
-                                style: const TextStyle(fontSize: 13),
-                                decoration: const InputDecoration(
-                                    contentPadding:
-                                        EdgeInsets.only(bottom: 9, left: 3),
-                                    border: InputBorder.none,
-                                    focusedBorder: InputBorder.none,
-                                    hintText: 'Informe sua rua...',
-                                    fillColor: Colors.white),
-                              );
-                            }),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        Expanded(
-                          flex: 5,
-                          child: Container(
-                            padding: const EdgeInsets.only(left: 8),
-                            height: 40,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Observer(builder: (_) {
-                              return TextFormField(
-                                validator: (value) {
-                                  if (value!.isNotEmpty) {
-                                    return 'Esse campo não foi preenchido';
-                                  }
-                                },
-                                onChanged: (text) {
-                                  registerStore.setBairro(text);
-                                },
-                                controller: controllerBairro,
-                                cursorColor: primaryGreen,
-                                style: const TextStyle(fontSize: 13),
-                                decoration: const InputDecoration(
-                                    contentPadding:
-                                        EdgeInsets.only(bottom: 9, left: 3),
-                                    border: InputBorder.none,
-                                    focusedBorder: InputBorder.none,
-                                    hintText: 'Informe seu bairro...',
-                                    fillColor: Colors.white),
-                              );
-                            }),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      children: const [
-                        Expanded(
-                            flex: 5, child: Text('Tipo de ocorrência(*):')),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Observer(builder: (_) {
-                      return Flexible(
-                        flex: 5,
-                        child: Container(
-                          padding: const EdgeInsets.only(left: 8),
-                          height: 40,
-                          width: 220,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: DropdownButtonHideUnderline(
-                            child: DropdownButton<String>(
-                              value: dropdown2,
-                              borderRadius: BorderRadius.circular(10),
-                              icon: const Icon(Icons.arrow_drop_down_rounded,
-                                  color: primaryGreen),
-                              iconSize: 22,
-                              elevation: 14,
-                              style: const TextStyle(
-                                  fontSize: 12, color: primaryGrey),
-                              onChanged: (value) {
-                                setState(() {
-                                  dropdown2 = value!;
-                                  registerStore
-                                      .setTipoOcorrencia(value.toString());
-                                });
-                              },
-                              items: ocorrencias.map(
-                                (item) {
-                                  return DropdownMenuItem<String>(
-                                    value: item,
-                                    child: Text(item),
-                                  );
-                                },
-                              ).toList(),
+                            child: Container(
+                              padding: const EdgeInsets.only(left: 6),
+                              height: 40,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Observer(builder: (_) {
+                                return DropdownButtonHideUnderline(
+                                  child: DropdownButton<String>(
+                                    value: registerStore.uf,
+                                    hint: const Text(
+                                      'Informe seu estado...',
+                                      style: TextStyle(fontSize: 12),
+                                    ),
+                                    borderRadius: BorderRadius.circular(10),
+                                    icon: const Icon(
+                                        Icons.arrow_drop_down_rounded,
+                                        color: primaryGreen),
+                                    iconSize: 22,
+                                    elevation: 14,
+                                    style: const TextStyle(
+                                        fontSize: 12, color: primaryGrey),
+                                    onChanged: (value) {
+                                      registerStore.setUf(value.toString());
+                                    },
+                                    items: estados.map(
+                                      (item) {
+                                        return DropdownMenuItem<String>(
+                                          value: item,
+                                          child: Text(item),
+                                        );
+                                      },
+                                    ).toList(),
+                                  ),
+                                );
+                              }),
                             ),
                           ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Text('Rua:'),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        padding: const EdgeInsets.only(left: 8),
+                        height: 40,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
                         ),
-                      );
-                    }),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      children: const [
-                        Expanded(
-                            flex: 5, child: Text('Descrição da Ocorrência:')),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-                      Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.only(left: 7),
-                          height: 139,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: TextField(
+                        child: Observer(builder: (_) {
+                          return TextField(
+                            onChanged: (text) {
+                              registerStore.setRua(text);
+                            },
+                            controller: controllerRua,
                             cursorColor: primaryGreen,
                             style: const TextStyle(fontSize: 13),
-                            onChanged: (text) {
-                              registerStore.setDescricao(text);
-                            },
                             decoration: const InputDecoration(
                                 contentPadding:
                                     EdgeInsets.only(bottom: 9, left: 3),
                                 border: InputBorder.none,
                                 focusedBorder: InputBorder.none,
-                                hintText:
-                                    'Ex.: Queimada em parque da área urbana, ocasioanada por rompimento de cabo elétrico da companhia enérgetica...',
+                                hintText: 'Informe sua rua...',
                                 fillColor: Colors.white),
+                          );
+                        }),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Text('Bairro:'),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        padding: const EdgeInsets.only(left: 8),
+                        height: 40,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Observer(builder: (_) {
+                          return TextField(
+                            onChanged: (text) {
+                              registerStore.setBairro(text);
+                            },
+                            controller: controllerBairro,
+                            cursorColor: primaryGreen,
+                            style: const TextStyle(fontSize: 13),
+                            decoration: const InputDecoration(
+                                contentPadding:
+                                    EdgeInsets.only(bottom: 9, left: 3),
+                                border: InputBorder.none,
+                                focusedBorder: InputBorder.none,
+                                hintText: 'Informe seu bairro...',
+                                fillColor: Colors.white),
+                          );
+                        }),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        children: const [
+                          Expanded(
+                              flex: 5, child: Text('Tipo de ocorrência(*):')),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Flexible(
+                        flex: 5,
+                        child: Container(
+                          padding: const EdgeInsets.only(left: 8),
+                          height: 40,
+                          width: 225,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5),
                           ),
+                          child: Observer(builder: (_) {
+                            return DropdownButtonHideUnderline(
+                              child: DropdownButton<String>(
+                                hint: Text(
+                                  'Escolha um tipo de Ocorrêcia...',
+                                  style: TextStyle(fontSize: 12),
+                                ),
+                                value: dropdown2,
+                                borderRadius: BorderRadius.circular(10),
+                                icon: const Icon(Icons.arrow_drop_down_rounded,
+                                    color: primaryGreen),
+                                iconSize: 22,
+                                elevation: 14,
+                                style: const TextStyle(
+                                    fontSize: 12, color: primaryGrey),
+                                onChanged: (value) {
+                                  registerStore
+                                      .setTipoOcorrencia(value.toString());
+                                },
+                                items: ocorrencias.map(
+                                  (item) {
+                                    return DropdownMenuItem<String>(
+                                      value: item,
+                                      child: Text(item),
+                                    );
+                                  },
+                                ).toList(),
+                              ),
+                            );
+                          }),
                         ),
                       ),
-                    ]),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-                      Expanded(
-                          flex: 1,
-                          child: Observer(builder: (_) {
-                            return imageStore.image == null
-                                ? const Text(
-                                    'Não há nenhuma imagem selecionada')
-                                : Image.file(imageStore.image!);
-                          })),
-                    ]),
-                    const SizedBox(
-                      height: 7,
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            'Coordenadas: ${registerStore.latitude}, ${registerStore.longitude}',
-                            style: const TextStyle(
-                                fontSize: 14, color: Colors.black54),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            'Data: ${registerStore.formattedDate}',
-                            style: const TextStyle(
-                                fontSize: 14, color: Colors.black54),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            'Hora: ${registerStore.formattedTime}',
-                            style: const TextStyle(
-                                fontSize: 14, color: Colors.black54),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    Row(children: [
-                      Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 20.0),
-                          child: Container(
-                            height: 50.0,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(25.0),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        children: const [
+                          Expanded(
+                              flex: 5, child: Text('Descrição da Ocorrência:')),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: Container(
+                                padding: const EdgeInsets.only(left: 7),
+                                height: 139,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: TextFormField(
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Campo obrigatório!';
+                                    }
+                                  },
+                                  cursorColor: primaryGreen,
+                                  style: const TextStyle(fontSize: 13),
+                                  decoration: const InputDecoration(
+                                      contentPadding:
+                                          EdgeInsets.only(bottom: 9, left: 3),
+                                      border: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      hintText:
+                                          'Ex.: Queimada em parque da área urbana, ocasioanada por rompimento de cabo elétrico da companhia enérgetica...',
+                                      fillColor: Colors.white),
+                                ),
+                              ),
                             ),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                registerStore.addOccurrence();
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const FinishedPage()));
-                              },
-                              style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStateProperty.all<Color>(
-                                          primaryGreen),
-                                  shape: MaterialStateProperty.all<
-                                          RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                  ))),
-                              child: Text(
-                                "Enviar ocorrência".toUpperCase(),
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.w300),
+                          ]),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Expanded(
+                                flex: 1,
+                                child: Observer(builder: (_) {
+                                  return imageStore.image == null
+                                      ? const Text(
+                                          'Não há nenhuma imagem selecionada')
+                                      : Image.file(imageStore.image!);
+                                })),
+                          ]),
+                      const SizedBox(
+                        height: 7,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Coordenadas: ${registerStore.latitude}, ${registerStore.longitude}',
+                              style: const TextStyle(
+                                  fontSize: 14, color: Colors.black54),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Data: ${registerStore.formattedDate}',
+                              style: const TextStyle(
+                                  fontSize: 14, color: Colors.black54),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Hora: ${registerStore.formattedTime}',
+                              style: const TextStyle(
+                                  fontSize: 14, color: Colors.black54),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 40,
+                      ),
+                      Row(children: [
+                        Expanded(
+                          flex: 1,
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 20.0),
+                            child: Container(
+                              height: 50.0,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(25.0),
+                              ),
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  if (formKey.currentState!.validate()) {
+                                    cidade = controllerCidade.text;
+                                    descricao = controllerDescricao.text;
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const FinishedPage()));
+                                  }
+                                },
+                                style: ButtonStyle(
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            primaryGreen),
+                                    shape: MaterialStateProperty.all<
+                                            RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ))),
+                                child: Text(
+                                  "Enviar ocorrência".toUpperCase(),
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 14.0,
+                                      fontWeight: FontWeight.w300),
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ]),
-                    const SizedBox(
-                      height: 25,
-                    )
-                  ],
-                ),
-              )
-            ],
+                      ]),
+                      const SizedBox(
+                        height: 25,
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

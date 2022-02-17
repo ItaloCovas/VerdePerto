@@ -71,16 +71,16 @@ class _ReportsPageState extends State<ReportsPage> {
                           padding: const EdgeInsets.only(left: 8),
                           height: 40,
                           decoration: BoxDecoration(
-                            color: primaryGrey.withOpacity(0.3),
+                            color: primaryGrey.withOpacity(0.2),
                             borderRadius: BorderRadius.circular(5),
                           ),
                           child: DropdownButtonHideUnderline(
                             child: DropdownButton<String>(
                               borderRadius: BorderRadius.circular(10),
                               value: dropdown,
-                              icon: const Icon(Icons.keyboard_arrow_down,
-                                  color: Colors.grey),
-                              iconSize: 24,
+                              icon: const Icon(Icons.arrow_drop_down_rounded,
+                                  color: primaryGreen),
+                              iconSize: 30,
                               elevation: 14,
                               style: const TextStyle(
                                   fontSize: 14, color: Colors.black),
@@ -118,7 +118,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                   width: double.infinity,
                                   height: 60,
                                   decoration: BoxDecoration(
-                                      color: primaryGrey.withOpacity(0.3),
+                                      color: primaryGrey.withOpacity(0.2),
                                       borderRadius: BorderRadius.circular(10)),
                                   child: Column(
                                     children: [
