@@ -527,6 +527,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             ),
                             child: ElevatedButton(
                               onPressed: () {
+                                registerStore.addOccurrence();
                                 Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
