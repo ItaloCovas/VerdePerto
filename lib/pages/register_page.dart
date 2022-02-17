@@ -236,17 +236,17 @@ class _RegisterPageState extends State<RegisterPage> {
                         const SizedBox(
                           width: 8,
                         ),
-                        Expanded(
-                          flex: 5,
-                          child: Container(
-                            padding: const EdgeInsets.only(left: 8),
-                            height: 40,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Observer(builder: (_) {
-                              return DropdownButtonHideUnderline(
+                        Observer(builder: (_) {
+                          return Expanded(
+                            flex: 5,
+                            child: Container(
+                              padding: const EdgeInsets.only(left: 8),
+                              height: 40,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: DropdownButtonHideUnderline(
                                 child: DropdownButton<String>(
                                   value: registerStore.uf,
                                   hint: const Text(
@@ -262,7 +262,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                   style: const TextStyle(
                                       fontSize: 12, color: primaryGrey),
                                   onChanged: (value) {
-                                    registerStore.setUf(value.toString());
+                                    setState(() {
+                                      registerStore.setUf(value.toString());
+                                    });
                                   },
                                   items: estados.map(
                                     (item) {
@@ -273,10 +275,10 @@ class _RegisterPageState extends State<RegisterPage> {
                                     },
                                   ).toList(),
                                 ),
-                              );
-                            }),
-                          ),
-                        ),
+                              ),
+                            ),
+                          );
+                        }),
                       ],
                     ),
                     const SizedBox(
@@ -382,18 +384,18 @@ class _RegisterPageState extends State<RegisterPage> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Flexible(
-                      flex: 5,
-                      child: Container(
-                        padding: const EdgeInsets.only(left: 8),
-                        height: 40,
-                        width: 220,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: Observer(builder: (_) {
-                          return DropdownButtonHideUnderline(
+                    Observer(builder: (_) {
+                      return Flexible(
+                        flex: 5,
+                        child: Container(
+                          padding: const EdgeInsets.only(left: 8),
+                          height: 40,
+                          width: 220,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: DropdownButtonHideUnderline(
                             child: DropdownButton<String>(
                               value: dropdown2,
                               borderRadius: BorderRadius.circular(10),
@@ -404,8 +406,11 @@ class _RegisterPageState extends State<RegisterPage> {
                               style: const TextStyle(
                                   fontSize: 12, color: primaryGrey),
                               onChanged: (value) {
-                                registerStore
-                                    .setTipoOcorrencia(value.toString());
+                                setState(() {
+                                  dropdown2 = value!;
+                                  registerStore
+                                      .setTipoOcorrencia(value.toString());
+                                });
                               },
                               items: ocorrencias.map(
                                 (item) {
@@ -416,10 +421,10 @@ class _RegisterPageState extends State<RegisterPage> {
                                 },
                               ).toList(),
                             ),
-                          );
-                        }),
-                      ),
-                    ),
+                          ),
+                        ),
+                      );
+                    }),
                     const SizedBox(
                       height: 15,
                     ),
