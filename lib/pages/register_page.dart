@@ -161,13 +161,19 @@ class _RegisterPageState extends State<RegisterPage> {
                                 if (cepStore.cepModel != null) {
                                   controllerCidade.text =
                                       cepStore.cepModel!.localidade.toString();
+                                  registerStore.cidade =
+                                      cepStore.cepModel!.localidade.toString();
                                 }
                                 if (cepStore.cepModel != null) {
                                   controllerBairro.text =
                                       cepStore.cepModel!.bairro.toString();
+                                  registerStore.bairro =
+                                      cepStore.cepModel!.bairro.toString();
                                 }
                                 if (cepStore.cepModel != null) {
                                   controllerRua.text =
+                                      cepStore.cepModel!.logradouro.toString();
+                                  registerStore.rua =
                                       cepStore.cepModel!.logradouro.toString();
                                 }
                                 if (cepStore.cepModel != null) {
@@ -175,6 +181,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                       cepStore.cepModel!.uf.toString();
                                 }
                               });
+                            },
+                            onChanged: (text) {
+                              registerStore.setCep(int.parse(text));
                             },
                             cursorColor: primaryGreen,
                             style: const TextStyle(fontSize: 13),
@@ -290,7 +299,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       const SizedBox(
                         height: 15,
                       ),
-                      Text('Rua:'),
+                      const Text('Rua:'),
                       const SizedBox(
                         height: 10,
                       ),
@@ -322,7 +331,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       const SizedBox(
                         height: 15,
                       ),
-                      Text('Bairro:'),
+                      const Text('Bairro:'),
                       const SizedBox(
                         height: 10,
                       ),
@@ -376,7 +385,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           child: Observer(builder: (_) {
                             return DropdownButtonHideUnderline(
                               child: DropdownButton<String>(
-                                hint: Text(
+                                hint: const Text(
                                   'Escolha um tipo de Ocorrêcia...',
                                   style: TextStyle(fontSize: 12),
                                 ),
@@ -389,8 +398,11 @@ class _RegisterPageState extends State<RegisterPage> {
                                 style: const TextStyle(
                                     fontSize: 12, color: primaryGrey),
                                 onChanged: (value) {
-                                  registerStore
-                                      .setTipoOcorrencia(value.toString());
+                                  setState(() {
+                                    dropdown2 = value;
+                                    registerStore
+                                        .setTipoOcorrencia(value.toString());
+                                  });
                                 },
                                 items: ocorrencias.map(
                                   (item) {
@@ -433,6 +445,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                     if (value == null || value.isEmpty) {
                                       return 'Campo obrigatório!';
                                     }
+                                  },
+                                  onChanged: (text) {
+                                    registerStore.setDescricao(text);
                                   },
                                   cursorColor: primaryGreen,
                                   style: const TextStyle(fontSize: 13),
@@ -524,6 +539,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   if (formKey.currentState!.validate()) {
                                     cidade = controllerCidade.text;
                                     descricao = controllerDescricao.text;
+                                    registerStore.addOccurrence();
                                     Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
