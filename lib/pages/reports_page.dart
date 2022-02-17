@@ -76,14 +76,15 @@ class _ReportsPageState extends State<ReportsPage> {
                           ),
                           child: DropdownButtonHideUnderline(
                             child: DropdownButton<String>(
+                              dropdownColor: Colors.grey[200],
                               borderRadius: BorderRadius.circular(10),
                               value: dropdown,
                               icon: const Icon(Icons.arrow_drop_down_rounded,
                                   color: primaryGreen),
                               iconSize: 30,
-                              elevation: 14,
+                              elevation: 0,
                               style: const TextStyle(
-                                  fontSize: 14, color: Colors.black),
+                                  fontSize: 13.5, color: Colors.black),
                               onChanged: (String? value) {
                                 setState(() {
                                   dropdown = value!;
@@ -114,6 +115,7 @@ class _ReportsPageState extends State<ReportsPage> {
                             scrollDirection: Axis.vertical,
                             itemBuilder: (ctx, index) {
                               return Card(
+                                elevation: 0,
                                 child: Container(
                                   width: double.infinity,
                                   height: 60,
@@ -128,10 +130,10 @@ class _ReportsPageState extends State<ReportsPage> {
                                             padding: const EdgeInsets.all(5.0),
                                             child: ClipOval(
                                               child: Image.network(
-                                                'https://th.bing.com/th/id/R.785dff7556ca090d9e863ffc555bbb56?rik=SjGFefW1wxIFFg&riu=http%3a%2f%2fwww.ambientelegal.com.br%2fwp-content%2fuploads%2famazonia41.jpg&ehk=P2XC5ja3GeA2Rw1QR9AJ3zSj1bkWrySaThzTf39s%2fmg%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1',
-                                                width: 50,
-                                                height: 50,
-                                              ),
+                                                  'https://th.bing.com/th/id/OIP.1Uts0ICCTjopo1HuwcEQdQHaFR?pid=ImgDet&rs=1',
+                                                  width: 50,
+                                                  height: 50,
+                                                  fit: BoxFit.fill),
                                             ),
                                           ),
                                           SizedBox(
