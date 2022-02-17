@@ -84,23 +84,23 @@ abstract class _RegisterStoreBase with Store {
 
   @observable
   var database = Database();
-  OcurrencyModel newModel = OcurrencyModel(
-    denunciante: denunciante,
-    uf: uf,
-    cidade: cidade,
-    bairro: bairro,
-    rua: rua,
-    cep: cep,
-    tipoOcorrencia: tipoOcorrencia,
-    descricao: descricao,
-    latitude: latitude,
-    longitude: longitude,
-    formattedDate: formattedDate,
-    formattedTime: formattedTime,
-  );
 
   @action
   addOccurrence() {
-    database.addOccurrence();
+    OcurrencyModel newModel = OcurrencyModel(
+      denunciante: denunciante,
+      uf: uf,
+      cidade: cidade,
+      bairro: bairro,
+      rua: rua,
+      cep: cep,
+      tipoOcorrencia: tipoOcorrencia,
+      descricao: descricao,
+      latitude: latitude,
+      longitude: longitude,
+      formattedDate: formattedDate,
+      formattedTime: formattedTime,
+    );
+    database.addOccurrence(newModel);
   }
 }
