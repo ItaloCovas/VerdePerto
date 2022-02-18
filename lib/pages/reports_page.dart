@@ -4,7 +4,7 @@ import 'package:verde_perto/pages/register_page.dart';
 import 'package:verde_perto/theme/theme.dart';
 
 class ReportsPage extends StatefulWidget {
-  ReportsPage({Key? key}) : super(key: key);
+  const ReportsPage({Key? key}) : super(key: key);
 
   @override
   State<ReportsPage> createState() => _ReportsPageState();
@@ -41,15 +41,15 @@ class _ReportsPageState extends State<ReportsPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Text(
+                    const Text(
                       'Consulta Pública de Ocorrências',
                       style:
                           TextStyle(fontWeight: FontWeight.w700, fontSize: 22),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     const Text(
@@ -57,14 +57,14 @@ class _ReportsPageState extends State<ReportsPage> {
                       textAlign: TextAlign.start,
                       style: TextStyle(fontSize: 14),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         const Text('Filtrar por:'),
-                        SizedBox(
+                        const SizedBox(
                           width: 15,
                         ),
                         Container(
@@ -107,54 +107,62 @@ class _ReportsPageState extends State<ReportsPage> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 10),
-                      child: Flexible(
-                        child: ListView.builder(
-                            physics: NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: 15,
-                            scrollDirection: Axis.vertical,
-                            itemBuilder: (ctx, index) {
-                              return Card(
-                                elevation: 0,
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 60,
-                                  decoration: BoxDecoration(
-                                      color: primaryGrey.withOpacity(0.2),
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Column(
-                                    children: [
-                                      Row(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Flexible(
+                            child: ListView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: 15,
+                                scrollDirection: Axis.vertical,
+                                itemBuilder: (ctx, index) {
+                                  return Card(
+                                    elevation: 0,
+                                    child: Container(
+                                      width: double.infinity,
+                                      height: 60,
+                                      decoration: BoxDecoration(
+                                          color: primaryGrey.withOpacity(0.2),
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: Column(
                                         children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(5.0),
-                                            child: ClipOval(
-                                              child: Image.network(
-                                                  'https://th.bing.com/th/id/OIP.1Uts0ICCTjopo1HuwcEQdQHaFR?pid=ImgDet&rs=1',
-                                                  width: 50,
-                                                  height: 50,
-                                                  fit: BoxFit.fill),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 12,
-                                          ),
-                                          const Expanded(
-                                            child: Text(
-                                              'Incêndio/Queimadas_BeloHorizonte',
-                                              style: TextStyle(fontSize: 12),
-                                            ),
+                                          Row(
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(5.0),
+                                                child: ClipOval(
+                                                  child: Image.network(
+                                                      'https://th.bing.com/th/id/OIP.1Uts0ICCTjopo1HuwcEQdQHaFR?pid=ImgDet&rs=1',
+                                                      width: 50,
+                                                      height: 50,
+                                                      fit: BoxFit.fill),
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                width: 12,
+                                              ),
+                                              const Expanded(
+                                                child: Text(
+                                                  'Incêndio/Queimadas_BeloHorizonte',
+                                                  style:
+                                                      TextStyle(fontSize: 12),
+                                                ),
+                                              )
+                                            ],
                                           )
                                         ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              );
-                            }),
+                                      ),
+                                    ),
+                                  );
+                                }),
+                          ),
+                        ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     RichText(
@@ -174,7 +182,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                 ..onTap = () {
                                   Navigator.pushReplacement(context,
                                       MaterialPageRoute(builder: (context) {
-                                    return RegisterPage();
+                                    return const RegisterPage();
                                   }));
                                 }),
                         ])),

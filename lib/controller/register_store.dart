@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart';
 
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -94,10 +95,13 @@ abstract class _RegisterStoreBase with Store {
   var database = Database();
 
   @action
-  addOccurrence() {
-    final bytes = File(imageStore.image!.path).readAsBytesSync();
-    String base64Image = base64Encode(bytes);
-    print(base64Image);
+  addOccurrence() async {
+    final ref = FirebaseStorage.instance
+        .ref()
+        .child('occurrenceImages')
+        .child(denunciante! + '.jpg');
+    await ref.putFile(imageStore.image!);
+    var url = await ref.getDownloadURL();
     OcurrencyModel newModel = OcurrencyModel(
       denunciante: denunciante,
       uf: uf,
@@ -105,7 +109,7 @@ abstract class _RegisterStoreBase with Store {
       bairro: bairro,
       rua: rua,
       cep: cep,
-      image: base64Image,
+      image: url,
       tipoOcorrencia: tipoOcorrencia,
       descricao: descricao,
       latitude: latitude,

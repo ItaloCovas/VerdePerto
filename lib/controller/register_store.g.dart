@@ -212,6 +212,14 @@ mixin _$RegisterStore on _RegisterStoreBase, Store {
     return _$getPositionAsyncAction.run(() => super.getPosition());
   }
 
+  final _$addOccurrenceAsyncAction =
+      AsyncAction('_RegisterStoreBase.addOccurrence');
+
+  @override
+  Future addOccurrence() {
+    return _$addOccurrenceAsyncAction.run(() => super.addOccurrence());
+  }
+
   final _$_RegisterStoreBaseActionController =
       ActionController(name: '_RegisterStoreBase');
 
@@ -298,17 +306,6 @@ mixin _$RegisterStore on _RegisterStoreBase, Store {
         name: '_RegisterStoreBase.setDescricao');
     try {
       return super.setDescricao(value);
-    } finally {
-      _$_RegisterStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic addOccurrence() {
-    final _$actionInfo = _$_RegisterStoreBaseActionController.startAction(
-        name: '_RegisterStoreBase.addOccurrence');
-    try {
-      return super.addOccurrence();
     } finally {
       _$_RegisterStoreBaseActionController.endAction(_$actionInfo);
     }
