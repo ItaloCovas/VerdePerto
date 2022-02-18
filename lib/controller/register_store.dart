@@ -96,7 +96,7 @@ abstract class _RegisterStoreBase with Store {
   @action
   addOccurrence() {
     final bytes = File(imageStore.image!.path).readAsBytesSync();
-    String base64Image = "data:image/png;base64," + base64Encode(bytes);
+    String base64Image = base64Encode(bytes);
     print(base64Image);
     OcurrencyModel newModel = OcurrencyModel(
       denunciante: denunciante,
