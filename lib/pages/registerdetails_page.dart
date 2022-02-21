@@ -104,6 +104,8 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                         ),
                         Image.network(
                           registerStore.ocurrencies![index].image!,
+                          width: double.infinity,
+                          height: 450,
                         ),
                         const SizedBox(
                           height: 15,
