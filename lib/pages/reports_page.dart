@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:verde_perto/pages/register_page.dart';
@@ -12,6 +13,8 @@ class ReportsPage extends StatefulWidget {
 
 class _ReportsPageState extends State<ReportsPage> {
   String dropdown = 'Todos';
+  final Stream<QuerySnapshot> stream =
+      FirebaseFirestore.instance.collection('ocorrencias').snapshots();
 
   @override
   Widget build(BuildContext context) {
@@ -111,51 +114,67 @@ class _ReportsPageState extends State<ReportsPage> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Flexible(
-                            child: ListView.builder(
-                                physics: const NeverScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                itemCount: 15,
-                                scrollDirection: Axis.vertical,
-                                itemBuilder: (ctx, index) {
-                                  return Card(
-                                    elevation: 0,
-                                    child: Container(
-                                      width: double.infinity,
-                                      height: 60,
-                                      decoration: BoxDecoration(
-                                          color: primaryGrey.withOpacity(0.2),
-                                          borderRadius:
-                                              BorderRadius.circular(10)),
-                                      child: Column(
-                                        children: [
-                                          Row(
+                            child: StreamBuilder<QuerySnapshot>(
+                                stream: stream,
+                                builder: (BuildContext context,
+                                    AsyncSnapshot<QuerySnapshot> snapshot) {
+                                  if (!snapshot.hasData) {
+                                    return const Center(
+                                      child: Text('Sem ocorrências!'),
+                                    );
+                                  }
+                                  return ListView(
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    children: snapshot.data!.docs
+                                        .map((DocumentSnapshot document) {
+                                      Map<String, dynamic> data = document
+                                          .data()! as Map<String, dynamic>;
+                                      return Card(
+                                        elevation: 0,
+                                        child: Container(
+                                          width: double.infinity,
+                                          height: 60,
+                                          decoration: BoxDecoration(
+                                              color:
+                                                  primaryGrey.withOpacity(0.2),
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          child: Column(
                                             children: [
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(5.0),
-                                                child: ClipOval(
-                                                  child: Image.network(
-                                                      'https://th.bing.com/th/id/OIP.1Uts0ICCTjopo1HuwcEQdQHaFR?pid=ImgDet&rs=1',
-                                                      width: 50,
-                                                      height: 50,
-                                                      fit: BoxFit.fill),
-                                                ),
-                                              ),
-                                              const SizedBox(
-                                                width: 12,
-                                              ),
-                                              const Expanded(
-                                                child: Text(
-                                                  'Incêndio/Queimadas_BeloHorizonte',
-                                                  style:
-                                                      TextStyle(fontSize: 12),
-                                                ),
+                                              Row(
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            5.0),
+                                                    child: ClipOval(
+                                                      child: Image.network(
+                                                          data['image'],
+                                                          width: 50,
+                                                          height: 50,
+                                                          fit: BoxFit.fill),
+                                                    ),
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 12,
+                                                  ),
+                                                  Expanded(
+                                                    child: Text(
+                                                      data['tipoOcorrencia'],
+                                                      style: const TextStyle(
+                                                          fontSize: 12),
+                                                    ),
+                                                  )
+                                                ],
                                               )
                                             ],
-                                          )
-                                        ],
-                                      ),
-                                    ),
+                                          ),
+                                        ),
+                                      );
+                                    }).toList(),
                                   );
                                 }),
                           ),
