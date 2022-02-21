@@ -5,6 +5,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:verde_perto/controller/register_store.dart';
 import 'package:verde_perto/pages/register_page.dart';
+import 'package:verde_perto/pages/registerdetails_page.dart';
 import 'package:verde_perto/theme/theme.dart';
 
 class ReportsPage extends StatefulWidget {
@@ -124,58 +125,77 @@ class _ReportsPageState extends State<ReportsPage> {
                         children: [
                           Flexible(
                             child: Observer(builder: (_) {
-                              return ListView.builder(
-                                physics: const NeverScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                padding: const EdgeInsets.only(top: 10),
-                                scrollDirection: Axis.vertical,
-                                itemCount: registerStore.ocurrencies!.length,
-                                itemBuilder: (ctx, index) {
-                                  var occurrencies =
-                                      registerStore.ocurrencies![0][index];
-                                  return Padding(
-                                    padding: const EdgeInsets.only(top: 15),
-                                    child: Container(
-                                      width: double.infinity,
-                                      height: 60,
-                                      decoration: BoxDecoration(
-                                          color: primaryGrey.withOpacity(0.2),
-                                          borderRadius:
-                                              BorderRadius.circular(10)),
-                                      child: Column(
-                                        children: [
-                                          Row(
+                              if (registerStore.ocurrencies != null) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                RegisterDetailsPage()));
+                                  },
+                                  child: ListView.builder(
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    shrinkWrap: true,
+                                    padding: const EdgeInsets.only(top: 10),
+                                    scrollDirection: Axis.vertical,
+                                    itemCount:
+                                        registerStore.ocurrencies!.length,
+                                    itemBuilder: (ctx, index) {
+                                      var occurrencies =
+                                          registerStore.ocurrencies![0][index];
+                                      return Padding(
+                                        padding: const EdgeInsets.only(top: 15),
+                                        child: Container(
+                                          width: double.infinity,
+                                          height: 60,
+                                          decoration: BoxDecoration(
+                                              color:
+                                                  primaryGrey.withOpacity(0.2),
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          child: Column(
                                             children: [
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(5.0),
-                                                child: ClipOval(
-                                                  child: Image.network(
-                                                      occurrencies['image'],
-                                                      width: 50,
-                                                      height: 50,
-                                                      fit: BoxFit.fill),
-                                                ),
-                                              ),
-                                              const SizedBox(
-                                                width: 12,
-                                              ),
-                                              Expanded(
-                                                child: Text(
-                                                  occurrencies[
-                                                      'tipoOcorrencia'],
-                                                  style: const TextStyle(
-                                                      fontSize: 12),
-                                                ),
+                                              Row(
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            5.0),
+                                                    child: ClipOval(
+                                                      child: Image.network(
+                                                          occurrencies['image'],
+                                                          width: 50,
+                                                          height: 50,
+                                                          fit: BoxFit.fill),
+                                                    ),
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 12,
+                                                  ),
+                                                  Expanded(
+                                                    child: Text(
+                                                      occurrencies[
+                                                          'tipoOcorrencia'],
+                                                      style: const TextStyle(
+                                                          fontSize: 12),
+                                                    ),
+                                                  )
+                                                ],
                                               )
                                             ],
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  );
-                                },
-                              );
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                );
+                              } else {
+                                return const Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              }
                             }),
                           ),
                         ],
