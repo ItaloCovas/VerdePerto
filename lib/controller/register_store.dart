@@ -104,6 +104,7 @@ abstract class _RegisterStoreBase with Store {
         await FirebaseFirestore.instance.collection('ocorrencias').get();
     final data = collectionData.docs.map((doc) => doc.data()).toList();
     ocurrencies!.add(data);
+    print(ocurrencies.runtimeType);
   }
 
   @action
