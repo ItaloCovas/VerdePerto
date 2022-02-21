@@ -96,15 +96,14 @@ abstract class _RegisterStoreBase with Store {
   var database = Database();
 
   @observable
-  ObservableList? ocurrencies = ObservableList.of(<OcurrencyModel>[]);
+  ObservableList<OcurrencyModel>? ocurrencies = ObservableList.of(<OcurrencyModel>[]);
 
   @action
   getOccurrences() async {
-    QuerySnapshot collectionData =
-        await FirebaseFirestore.instance.collection('ocorrencias').get();
+    QuerySnapshot collectionData = await FirebaseFirestore.instance.collection('ocorrencias').get();
     final data = collectionData.docs.map((doc) {
       Map<String, dynamic> data = doc.data()! as Map<String, dynamic>;
-      OcurrencyModel.fromJson(data);
+      return OcurrencyModel.fromJson(data);
     }).toList();
     ocurrencies = ObservableList.of(data);
     print(ocurrencies.runtimeType);
@@ -112,10 +111,7 @@ abstract class _RegisterStoreBase with Store {
 
   @action
   addOccurrence() async {
-    final ref = FirebaseStorage.instance
-        .ref()
-        .child('occurrenceImages')
-        .child(denunciante! + '.jpg');
+    final ref = FirebaseStorage.instance.ref().child('occurrenceImages').child(denunciante! + '.jpg');
     await ref.putFile(imageStore.image!);
     var url = await ref.getDownloadURL();
     OcurrencyModel newModel = OcurrencyModel(

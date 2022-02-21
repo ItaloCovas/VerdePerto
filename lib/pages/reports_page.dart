@@ -59,8 +59,7 @@ class _ReportsPageState extends State<ReportsPage> {
                     ),
                     const Text(
                       'Consulta Pública de Ocorrências',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w700, fontSize: 22),
+                      style: TextStyle(fontWeight: FontWeight.w700, fontSize: 22),
                     ),
                     const SizedBox(
                       height: 10,
@@ -92,22 +91,16 @@ class _ReportsPageState extends State<ReportsPage> {
                               dropdownColor: Colors.grey[200],
                               borderRadius: BorderRadius.circular(10),
                               value: dropdown,
-                              icon: const Icon(Icons.arrow_drop_down_rounded,
-                                  color: primaryGreen),
+                              icon: const Icon(Icons.arrow_drop_down_rounded, color: primaryGreen),
                               iconSize: 30,
                               elevation: 0,
-                              style: const TextStyle(
-                                  fontSize: 13.5, color: Colors.black),
+                              style: const TextStyle(fontSize: 13.5, color: Colors.black),
                               onChanged: (String? value) {
                                 setState(() {
                                   dropdown = value!;
                                 });
                               },
-                              items: <String>[
-                                'Todos',
-                                'Mais recente',
-                                'Menos recente'
-                              ].map<DropdownMenuItem<String>>((String value) {
+                              items: <String>['Todos', 'Mais recente', 'Menos recente'].map<DropdownMenuItem<String>>((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
                                   child: Text(value),
@@ -125,50 +118,32 @@ class _ReportsPageState extends State<ReportsPage> {
                         children: [
                           Flexible(
                             child: Observer(builder: (_) {
-                              if (registerStore.ocurrencies != null) {
+                              if (registerStore.ocurrencies != null && registerStore.ocurrencies!.isNotEmpty) {
                                 return GestureDetector(
                                   onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                RegisterDetailsPage()));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterDetailsPage()));
                                   },
                                   child: ListView.builder(
-                                    physics:
-                                        const NeverScrollableScrollPhysics(),
+                                    physics: const NeverScrollableScrollPhysics(),
                                     shrinkWrap: true,
                                     padding: const EdgeInsets.only(top: 10),
                                     scrollDirection: Axis.vertical,
-                                    itemCount:
-                                        registerStore.ocurrencies!.length,
+                                    itemCount: registerStore.ocurrencies!.length,
                                     itemBuilder: (ctx, index) {
-                                      var occurrencies =
-                                          registerStore.ocurrencies![0][index];
                                       return Padding(
                                         padding: const EdgeInsets.only(top: 15),
                                         child: Container(
                                           width: double.infinity,
                                           height: 60,
-                                          decoration: BoxDecoration(
-                                              color:
-                                                  primaryGrey.withOpacity(0.2),
-                                              borderRadius:
-                                                  BorderRadius.circular(10)),
+                                          decoration: BoxDecoration(color: primaryGrey.withOpacity(0.2), borderRadius: BorderRadius.circular(10)),
                                           child: Column(
                                             children: [
                                               Row(
                                                 children: [
                                                   Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            5.0),
+                                                    padding: const EdgeInsets.all(5.0),
                                                     child: ClipOval(
-                                                      child: Image.network(
-                                                          occurrencies['image'],
-                                                          width: 50,
-                                                          height: 50,
-                                                          fit: BoxFit.fill),
+                                                      child: Image.network(registerStore.ocurrencies![index].image!, width: 50, height: 50, fit: BoxFit.fill),
                                                     ),
                                                   ),
                                                   const SizedBox(
@@ -176,10 +151,8 @@ class _ReportsPageState extends State<ReportsPage> {
                                                   ),
                                                   Expanded(
                                                     child: Text(
-                                                      occurrencies[
-                                                          'tipoOcorrencia'],
-                                                      style: const TextStyle(
-                                                          fontSize: 12),
+                                                      registerStore.ocurrencies![index].tipoOcorrencia!,
+                                                      style: const TextStyle(fontSize: 12),
                                                     ),
                                                   )
                                                 ],
@@ -207,20 +180,13 @@ class _ReportsPageState extends State<ReportsPage> {
                     RichText(
                         textAlign: TextAlign.center,
                         text: TextSpan(children: [
-                          const TextSpan(
-                              text: 'Quer registrar uma nova ocorrência?\n',
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 16)),
+                          const TextSpan(text: 'Quer registrar uma nova ocorrência?\n', style: TextStyle(color: Colors.black, fontSize: 16)),
                           TextSpan(
                               text: 'Clique Aqui',
-                              style: const TextStyle(
-                                  color: primaryGreen,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold),
+                              style: const TextStyle(color: primaryGreen, fontSize: 16, fontWeight: FontWeight.bold),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
-                                  Navigator.pushReplacement(context,
-                                      MaterialPageRoute(builder: (context) {
+                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
                                     return const RegisterPage();
                                   }));
                                 }),

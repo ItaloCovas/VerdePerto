@@ -207,13 +207,13 @@ mixin _$RegisterStore on _RegisterStoreBase, Store {
   final _$ocurrenciesAtom = Atom(name: '_RegisterStoreBase.ocurrencies');
 
   @override
-  ObservableList<dynamic>? get ocurrencies {
+  ObservableList<OcurrencyModel>? get ocurrencies {
     _$ocurrenciesAtom.reportRead();
     return super.ocurrencies;
   }
 
   @override
-  set ocurrencies(ObservableList<dynamic>? value) {
+  set ocurrencies(ObservableList<OcurrencyModel>? value) {
     _$ocurrenciesAtom.reportWrite(value, super.ocurrencies, () {
       super.ocurrencies = value;
     });
