@@ -204,12 +204,35 @@ mixin _$RegisterStore on _RegisterStoreBase, Store {
     });
   }
 
+  final _$ocurrenciesAtom = Atom(name: '_RegisterStoreBase.ocurrencies');
+
+  @override
+  ObservableList<dynamic>? get ocurrencies {
+    _$ocurrenciesAtom.reportRead();
+    return super.ocurrencies;
+  }
+
+  @override
+  set ocurrencies(ObservableList<dynamic>? value) {
+    _$ocurrenciesAtom.reportWrite(value, super.ocurrencies, () {
+      super.ocurrencies = value;
+    });
+  }
+
   final _$getPositionAsyncAction =
       AsyncAction('_RegisterStoreBase.getPosition');
 
   @override
   Future getPosition() {
     return _$getPositionAsyncAction.run(() => super.getPosition());
+  }
+
+  final _$getOccurrencesAsyncAction =
+      AsyncAction('_RegisterStoreBase.getOccurrences');
+
+  @override
+  Future getOccurrences() {
+    return _$getOccurrencesAsyncAction.run(() => super.getOccurrences());
   }
 
   final _$addOccurrenceAsyncAction =
@@ -326,7 +349,8 @@ latitude: ${latitude},
 longitude: ${longitude},
 formattedDate: ${formattedDate},
 formattedTime: ${formattedTime},
-database: ${database}
+database: ${database},
+ocurrencies: ${ocurrencies}
     ''';
   }
 }

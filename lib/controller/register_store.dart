@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 import 'package:flutter/material.dart';
@@ -93,6 +94,17 @@ abstract class _RegisterStoreBase with Store {
 
   @observable
   var database = Database();
+
+  @observable
+  ObservableList? ocurrencies = ObservableList.of(<OcurrencyModel>[]);
+
+  @action
+  getOccurrences() async {
+    QuerySnapshot collectionData =
+        await FirebaseFirestore.instance.collection('ocorrencias').get();
+    final data = collectionData.docs.map((doc) => doc.data()).toList();
+    ocurrencies!.add(data);
+  }
 
   @action
   addOccurrence() async {
