@@ -102,8 +102,11 @@ abstract class _RegisterStoreBase with Store {
   getOccurrences() async {
     QuerySnapshot collectionData =
         await FirebaseFirestore.instance.collection('ocorrencias').get();
-    final data = collectionData.docs.map((doc) => doc.data()).toList();
-    ocurrencies!.add(data);
+    final data = collectionData.docs.map((doc) {
+      Map<String, dynamic> data = doc.data()! as Map<String, dynamic>;
+      OcurrencyModel.fromJson(data);
+    }).toList();
+    ocurrencies = ObservableList.of(data);
     print(ocurrencies.runtimeType);
   }
 
