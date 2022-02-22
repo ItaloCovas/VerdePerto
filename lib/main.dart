@@ -3,9 +3,11 @@ import 'package:get_it/get_it.dart';
 import 'package:verde_perto/controller/cep_store.dart';
 import 'package:verde_perto/controller/image_store.dart';
 import 'package:verde_perto/controller/register_store.dart';
+import 'package:verde_perto/pages/finished_page.dart';
 import 'package:verde_perto/pages/register_page.dart';
 import 'package:verde_perto/pages/splashscreen_page.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:verde_perto/widgets/navigation_home.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
         fontFamily: 'Poppins',
       ),
-      home: const SplashScreenPage(),
+      home: const NavigationHome(),
     );
   }
 }

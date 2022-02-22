@@ -111,7 +111,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                           height: 15,
                         ),
                         Row(
-                          children: const [
+                          children: [
                             Text(
                               'Número da ocorrência:',
                               style: TextStyle(
@@ -121,7 +121,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                               width: 5,
                             ),
                             Text(
-                              '1',
+                              registerStore.ocurrencies![index].id!.toString(),
                               style: TextStyle(fontSize: 14),
                             )
                           ],

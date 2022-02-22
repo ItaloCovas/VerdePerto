@@ -95,6 +95,11 @@ abstract class _RegisterStoreBase with Store {
   @observable
   int id = 0;
 
+  @action
+  incrementId() {
+    id++;
+  }
+
   @observable
   var database = Database();
 
@@ -122,7 +127,7 @@ abstract class _RegisterStoreBase with Store {
         .child(denunciante! + '.jpg');
     await ref.putFile(imageStore.image!);
     var url = await ref.getDownloadURL();
-    id += 1;
+
     OcurrencyModel newModel = OcurrencyModel(
       denunciante: denunciante,
       uf: uf,

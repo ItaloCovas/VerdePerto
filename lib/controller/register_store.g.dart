@@ -189,6 +189,21 @@ mixin _$RegisterStore on _RegisterStoreBase, Store {
     });
   }
 
+  final _$idAtom = Atom(name: '_RegisterStoreBase.id');
+
+  @override
+  int get id {
+    _$idAtom.reportRead();
+    return super.id;
+  }
+
+  @override
+  set id(int value) {
+    _$idAtom.reportWrite(value, super.id, () {
+      super.id = value;
+    });
+  }
+
   final _$databaseAtom = Atom(name: '_RegisterStoreBase.database');
 
   @override
@@ -335,6 +350,17 @@ mixin _$RegisterStore on _RegisterStoreBase, Store {
   }
 
   @override
+  dynamic incrementId() {
+    final _$actionInfo = _$_RegisterStoreBaseActionController.startAction(
+        name: '_RegisterStoreBase.incrementId');
+    try {
+      return super.incrementId();
+    } finally {
+      _$_RegisterStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 denunciante: ${denunciante},
@@ -349,6 +375,7 @@ latitude: ${latitude},
 longitude: ${longitude},
 formattedDate: ${formattedDate},
 formattedTime: ${formattedTime},
+id: ${id},
 database: ${database},
 ocurrencies: ${ocurrencies}
     ''';

@@ -196,7 +196,10 @@ class _ReportsPageState extends State<ReportsPage> {
                                 );
                               } else {
                                 return const Center(
-                                  child: CircularProgressIndicator(),
+                                  child: Text(
+                                    'Nenhuma ocorrência registrada!',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
                                 );
                               }
                             }),
