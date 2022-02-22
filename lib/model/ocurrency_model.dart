@@ -7,6 +7,7 @@ class OcurrencyModel {
   String? rua;
   String? bairro;
   int? cep;
+  int? id;
   String? image;
   String? tipoOcorrencia;
   String? descricao;
@@ -22,6 +23,7 @@ class OcurrencyModel {
       this.rua,
       this.bairro,
       this.cep,
+      this.id,
       this.image,
       this.tipoOcorrencia,
       this.descricao,
@@ -37,6 +39,7 @@ class OcurrencyModel {
     rua = json['rua'];
     bairro = json['bairro'];
     cep = json['cep'];
+    id = json['id'];
     image = json['image'];
     tipoOcorrencia = json['tipoOcorrencia'];
     descricao = json['descricao'];
@@ -54,6 +57,7 @@ class OcurrencyModel {
     data['rua'] = rua;
     data['bairro'] = bairro;
     data['cep'] = cep;
+    data['id'] = id;
     data['image'] = image;
     data['tipoOcorrencia'] = tipoOcorrencia;
     data['descricao'] = descricao;

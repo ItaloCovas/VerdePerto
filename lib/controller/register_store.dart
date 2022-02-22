@@ -93,14 +93,19 @@ abstract class _RegisterStoreBase with Store {
   String formattedTime = DateFormat.Hm().format(data);
 
   @observable
+  int id = 0;
+
+  @observable
   var database = Database();
 
   @observable
-  ObservableList<OcurrencyModel>? ocurrencies = ObservableList.of(<OcurrencyModel>[]);
+  ObservableList<OcurrencyModel>? ocurrencies =
+      ObservableList.of(<OcurrencyModel>[]);
 
   @action
   getOccurrences() async {
-    QuerySnapshot collectionData = await FirebaseFirestore.instance.collection('ocorrencias').get();
+    QuerySnapshot collectionData =
+        await FirebaseFirestore.instance.collection('ocorrencias').get();
     final data = collectionData.docs.map((doc) {
       Map<String, dynamic> data = doc.data()! as Map<String, dynamic>;
       return OcurrencyModel.fromJson(data);
@@ -111,14 +116,19 @@ abstract class _RegisterStoreBase with Store {
 
   @action
   addOccurrence() async {
-    final ref = FirebaseStorage.instance.ref().child('occurrenceImages').child(denunciante! + '.jpg');
+    final ref = FirebaseStorage.instance
+        .ref()
+        .child('occurrenceImages')
+        .child(denunciante! + '.jpg');
     await ref.putFile(imageStore.image!);
     var url = await ref.getDownloadURL();
+    id += 1;
     OcurrencyModel newModel = OcurrencyModel(
       denunciante: denunciante,
       uf: uf,
       cidade: cidade,
       bairro: bairro,
+      id: id,
       rua: rua,
       cep: cep,
       image: url,
