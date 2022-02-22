@@ -118,10 +118,12 @@ abstract class _RegisterStoreBase with Store {
         .child('occurrenceImages')
         .child(denunciante! + '.jpg');
     await ref.putFile(imageStore.image!);
+    String id = FirebaseFirestore.instance.collection('ocorrencias').doc().id;
     var url = await ref.getDownloadURL();
     OcurrencyModel newModel = OcurrencyModel(
       denunciante: denunciante,
       uf: uf,
+      id: id,
       cidade: cidade,
       bairro: bairro,
       rua: rua,

@@ -177,7 +177,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                         ),
                         Row(
                           children: [
-                            Text(
+                            const Text(
                               'Estado: ',
                               style: TextStyle(
                                   fontWeight: FontWeight.w700, fontSize: 14),
@@ -196,7 +196,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                         ),
                         Row(
                           children: [
-                            Text(
+                            const Text(
                               'Rua:',
                               style: TextStyle(
                                   fontWeight: FontWeight.w700, fontSize: 14),
@@ -215,7 +215,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                         ),
                         Row(
                           children: [
-                            Text(
+                            const Text(
                               'Bairro:',
                               style: TextStyle(
                                   fontWeight: FontWeight.w700, fontSize: 14),
@@ -234,7 +234,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                         ),
                         Row(
                           children: [
-                            Text(
+                            const Text(
                               'Data:',
                               style: TextStyle(
                                   fontWeight: FontWeight.w700, fontSize: 14),
@@ -253,7 +253,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                         ),
                         Row(
                           children: [
-                            Text(
+                            const Text(
                               'Hora:',
                               style: TextStyle(
                                   fontWeight: FontWeight.w700, fontSize: 14),
@@ -273,7 +273,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            const Text(
                               'Descrição: ',
                               style: TextStyle(
                                 fontWeight: FontWeight.w700,
@@ -301,7 +301,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                     ),
                   );
                 } else {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 }

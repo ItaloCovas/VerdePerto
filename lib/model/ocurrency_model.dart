@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 class OcurrencyModel {
@@ -7,7 +8,7 @@ class OcurrencyModel {
   String? rua;
   String? bairro;
   int? cep;
-  int? id;
+  String? id;
   String? image;
   String? tipoOcorrencia;
   String? descricao;
