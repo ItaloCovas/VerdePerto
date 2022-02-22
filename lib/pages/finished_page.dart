@@ -59,10 +59,10 @@ class _FinishedPageState extends State<FinishedPage> {
                   const SizedBox(
                     height: 30,
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(top: 30),
                     child: Text(
-                      'Número da Ocorrência: ${registerStore.incrementId()}',
+                      'Número da Ocorrência:',
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 16, color: Colors.black),
                     ),
@@ -84,14 +84,14 @@ class _FinishedPageState extends State<FinishedPage> {
                               ..onTap = () {
                                 Navigator.pushReplacement(context,
                                     MaterialPageRoute(builder: (context) {
-                                  return NavigationHome();
+                                  return const NavigationHome();
                                 }));
                               }),
                       ]))
                 ],
               );
             } else {
-              return Center();
+              return const Center();
             }
           })),
     );

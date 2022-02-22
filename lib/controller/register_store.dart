@@ -93,14 +93,6 @@ abstract class _RegisterStoreBase with Store {
   String formattedTime = DateFormat.Hm().format(data);
 
   @observable
-  int id = 0;
-
-  @action
-  incrementId() {
-    id += 1;
-  }
-
-  @observable
   var database = Database();
 
   @observable
@@ -127,13 +119,11 @@ abstract class _RegisterStoreBase with Store {
         .child(denunciante! + '.jpg');
     await ref.putFile(imageStore.image!);
     var url = await ref.getDownloadURL();
-    incrementId();
     OcurrencyModel newModel = OcurrencyModel(
       denunciante: denunciante,
       uf: uf,
       cidade: cidade,
       bairro: bairro,
-      id: id,
       rua: rua,
       cep: cep,
       image: url,
