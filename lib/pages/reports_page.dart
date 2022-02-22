@@ -196,9 +196,12 @@ class _ReportsPageState extends State<ReportsPage> {
                                 );
                               } else {
                                 return const Center(
-                                  child: Text(
-                                    'Nenhuma ocorrência registrada!',
-                                    style: TextStyle(fontSize: 16),
+                                  child: Padding(
+                                    padding: EdgeInsets.only(top: 30.0),
+                                    child: Text(
+                                      'Nenhuma ocorrência registrada!',
+                                      style: TextStyle(fontSize: 16),
+                                    ),
                                   ),
                                 );
                               }

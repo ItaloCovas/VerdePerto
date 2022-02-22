@@ -21,7 +21,6 @@ class _FinishedPageState extends State<FinishedPage> {
 
     @override
     void initState() {
-      // TODO: implement initState
       super.initState();
       registerStore.getOccurrences();
     }
@@ -35,8 +34,7 @@ class _FinishedPageState extends State<FinishedPage> {
           height: height,
           color: secondaryGray,
           child: Observer(builder: (_) {
-            if (registerStore.ocurrencies != null &&
-                registerStore.ocurrencies!.isNotEmpty) {
+            if (registerStore.ocurrencies != null) {
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

@@ -97,7 +97,7 @@ abstract class _RegisterStoreBase with Store {
 
   @action
   incrementId() {
-    id++;
+    id += 1;
   }
 
   @observable
