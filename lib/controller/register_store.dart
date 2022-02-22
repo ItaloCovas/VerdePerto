@@ -127,7 +127,7 @@ abstract class _RegisterStoreBase with Store {
         .child(denunciante! + '.jpg');
     await ref.putFile(imageStore.image!);
     var url = await ref.getDownloadURL();
-
+    incrementId();
     OcurrencyModel newModel = OcurrencyModel(
       denunciante: denunciante,
       uf: uf,
