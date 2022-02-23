@@ -39,7 +39,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 32, right: 34),
+                padding: const EdgeInsets.only(left: 32, right: 16),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

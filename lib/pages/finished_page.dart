@@ -8,21 +8,16 @@ import 'package:verde_perto/theme/theme.dart';
 import 'package:verde_perto/widgets/navigation_home.dart';
 
 class FinishedPage extends StatefulWidget {
-  final int index;
-
   const FinishedPage({
     Key? key,
-    required this.index,
   }) : super(key: key);
 
   @override
-  State<FinishedPage> createState() => _FinishedPageState(index);
+  State<FinishedPage> createState() => _FinishedPageState();
 }
 
 class _FinishedPageState extends State<FinishedPage> {
-  final int index;
-
-  _FinishedPageState(this.index);
+  _FinishedPageState();
 
   @override
   Widget build(BuildContext context) {
@@ -67,14 +62,6 @@ class _FinishedPageState extends State<FinishedPage> {
                   ),
                   const SizedBox(
                     height: 30,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 30),
-                    child: Text(
-                      'Número da Ocorrência: ${registerStore.ocurrencies![index].id!}',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 16, color: Colors.black),
-                    ),
                   ),
                   RichText(
                       textAlign: TextAlign.center,
