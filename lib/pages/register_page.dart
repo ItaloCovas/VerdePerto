@@ -544,9 +544,8 @@ class _RegisterPageState extends State<RegisterPage> {
                                     Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => FinishedPage(
-                                                  index: 0,
-                                                )));
+                                            builder: (context) =>
+                                                const FinishedPage()));
                                   }
                                 },
                                 style: ButtonStyle(

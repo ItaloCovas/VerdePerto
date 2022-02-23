@@ -136,6 +136,6 @@ abstract class _RegisterStoreBase with Store {
       formattedDate: formattedDate,
       formattedTime: formattedTime,
     );
-    database.addOccurrence(newModel);
+    await database.addOccurrence(newModel);
   }
 }
