@@ -69,6 +69,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
+    int index;
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: secondaryGray,
@@ -535,16 +536,17 @@ class _RegisterPageState extends State<RegisterPage> {
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                               child: ElevatedButton(
-                                onPressed: () {
+                                onPressed: () async {
                                   if (formKey.currentState!.validate()) {
                                     cidade = controllerCidade.text;
                                     descricao = controllerDescricao.text;
-                                    registerStore.addOccurrence();
+                                    await registerStore.addOccurrence();
                                     Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                const FinishedPage()));
+                                            builder: (context) => FinishedPage(
+                                                  index: 0,
+                                                )));
                                   }
                                 },
                                 style: ButtonStyle(

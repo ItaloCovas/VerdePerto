@@ -39,7 +39,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 32, right: 30),
+                padding: const EdgeInsets.only(left: 32, right: 34),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -75,7 +75,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                           height: 10,
                         ),
                         const Text(
-                          'Ocorrência #1',
+                          'Detalhes da ocorrência',
                           style: TextStyle(
                               fontWeight: FontWeight.w700, fontSize: 22),
                           textAlign: TextAlign.start,
@@ -113,16 +113,20 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                         Row(
                           children: [
                             Text(
-                              'Número da ocorrência:',
+                              'ID da ocorrência:',
                               style: TextStyle(
                                   fontWeight: FontWeight.w700, fontSize: 14),
                             ),
                             SizedBox(
                               width: 5,
                             ),
-                            Text(
-                              registerStore.ocurrencies![index].id!.toString(),
-                              style: TextStyle(fontSize: 14),
+                            Flexible(
+                              flex: 5,
+                              child: Text(
+                                registerStore.ocurrencies![index].id!
+                                    .toString(),
+                                style: TextStyle(fontSize: 14),
+                              ),
                             )
                           ],
                         ),
