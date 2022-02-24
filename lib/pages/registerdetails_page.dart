@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:verde_perto/controller/register_store.dart';
 import 'package:verde_perto/pages/home_page.dart';
+import 'package:verde_perto/pages/reports_page.dart';
 import 'package:verde_perto/widgets/navigation_home.dart';
 
 class RegisterDetailsPage extends StatefulWidget {
@@ -49,10 +50,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                     ),
                     IconButton(
                         onPressed: () {
-                          Navigator.pushReplacement(context,
-                              MaterialPageRoute(builder: (context) {
-                            return const NavigationHome();
-                          }));
+                          Navigator.pop(context);
                         },
                         icon: const Icon(
                           Icons.close_rounded,

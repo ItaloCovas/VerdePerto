@@ -239,7 +239,7 @@ mixin _$RegisterStore on _RegisterStoreBase, Store {
       AsyncAction('_RegisterStoreBase.addOccurrence');
 
   @override
-  Future addOccurrence() {
+  Future<OcurrencyModel?> addOccurrence() {
     return _$addOccurrenceAsyncAction.run(() => super.addOccurrence());
   }
 

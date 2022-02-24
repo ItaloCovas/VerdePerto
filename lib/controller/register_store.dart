@@ -112,7 +112,7 @@ abstract class _RegisterStoreBase with Store {
   }
 
   @action
-  addOccurrence() async {
+  Future<OcurrencyModel?> addOccurrence() async {
     final ref = FirebaseStorage.instance
         .ref()
         .child('occurrenceImages')
@@ -137,5 +137,6 @@ abstract class _RegisterStoreBase with Store {
       formattedTime: formattedTime,
     );
     await database.addOccurrence(newModel);
+    return newModel;
   }
 }

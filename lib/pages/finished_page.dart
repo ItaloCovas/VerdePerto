@@ -8,8 +8,10 @@ import 'package:verde_perto/theme/theme.dart';
 import 'package:verde_perto/widgets/navigation_home.dart';
 
 class FinishedPage extends StatefulWidget {
-  const FinishedPage({
+  final String id;
+  FinishedPage({
     Key? key,
+    required this.id,
   }) : super(key: key);
 
   @override
@@ -54,6 +56,7 @@ class _FinishedPageState extends State<FinishedPage> {
                   const SizedBox(
                     height: 30,
                   ),
+                  Text(widget.id),
                   RichText(
                       textAlign: TextAlign.center,
                       text: TextSpan(children: [

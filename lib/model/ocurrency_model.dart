@@ -43,7 +43,7 @@ class OcurrencyModel {
       cep: json['cep'],
       id: json['id'],
       image: json['image'],
-      tipoOcorrencia: json['tipoOcorrencia'],
+      tipoOcorrencia: json['tipoOcorrencia'] ?? '',
       descricao: json['descricao'],
       latitude: json['latitude'],
       longitude: json['longitude'],

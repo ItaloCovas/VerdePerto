@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:verde_perto/controller/cep_store.dart';
 import 'package:verde_perto/controller/image_store.dart';
 import 'package:verde_perto/controller/register_store.dart';
+import 'package:verde_perto/model/ocurrency_model.dart';
 import 'package:verde_perto/pages/finished_page.dart';
 import 'package:verde_perto/theme/theme.dart';
 import 'package:geolocator/geolocator.dart';
@@ -540,12 +541,17 @@ class _RegisterPageState extends State<RegisterPage> {
                                   if (formKey.currentState!.validate()) {
                                     cidade = controllerCidade.text;
                                     descricao = controllerDescricao.text;
-                                    await registerStore.addOccurrence();
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                FinishedPage()));
+                                    OcurrencyModel? last =
+                                        await registerStore.addOccurrence();
+                                    if (last != null) {
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  FinishedPage(
+                                                    id: last.id,
+                                                  )));
+                                    } else {}
                                   }
                                 },
                                 style: ButtonStyle(
