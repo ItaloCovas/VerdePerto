@@ -21,7 +21,6 @@ class _ReportsPageState extends State<ReportsPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     registerStore.getOccurrences();
   }
@@ -167,7 +166,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                                           registerStore
                                                               .ocurrencies![
                                                                   index]
-                                                              .image!,
+                                                              .image,
                                                           width: 50,
                                                           height: 50,
                                                           fit: BoxFit.fill),
@@ -180,7 +179,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                                     child: Text(
                                                       registerStore
                                                           .ocurrencies![index]
-                                                          .tipoOcorrencia!,
+                                                          .tipoOcorrencia,
                                                       style: const TextStyle(
                                                           fontSize: 12),
                                                     ),

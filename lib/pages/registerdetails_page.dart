@@ -85,7 +85,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                         ),
                         Row(
                           children: [
-                            Text(
+                            const Text(
                               'Categoria:',
                               style: TextStyle(
                                   fontWeight: FontWeight.w700, fontSize: 14),
@@ -94,7 +94,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                               width: 5,
                             ),
                             Text(
-                              registerStore.ocurrencies![index].tipoOcorrencia!,
+                              registerStore.ocurrencies![index].tipoOcorrencia,
                               style: TextStyle(fontSize: 14),
                             ),
                           ],
@@ -103,7 +103,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                           height: 15,
                         ),
                         Image.network(
-                          registerStore.ocurrencies![index].image!,
+                          registerStore.ocurrencies![index].image,
                           width: double.infinity,
                           height: 450,
                         ),
@@ -123,8 +123,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                             Flexible(
                               flex: 5,
                               child: Text(
-                                registerStore.ocurrencies![index].id!
-                                    .toString(),
+                                registerStore.ocurrencies![index].id.toString(),
                                 style: TextStyle(fontSize: 14),
                               ),
                             )
@@ -136,7 +135,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Flexible(
+                            const Flexible(
                               flex: 5,
                               child: Text(
                                 'Coordenadas:',
@@ -150,7 +149,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                             Flexible(
                               flex: 6,
                               child: Text(
-                                '${registerStore.ocurrencies![index].latitude!}, ${registerStore.ocurrencies![index].longitude!}'
+                                '${registerStore.ocurrencies![index].latitude}, ${registerStore.ocurrencies![index].longitude}'
                                     .toString(),
                                 style: TextStyle(fontSize: 14),
                               ),
@@ -162,7 +161,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                         ),
                         Row(
                           children: [
-                            Text(
+                            const Text(
                               'Cidade:',
                               style: TextStyle(
                                   fontWeight: FontWeight.w700, fontSize: 14),
@@ -171,7 +170,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                               width: 5,
                             ),
                             Text(
-                              registerStore.ocurrencies![index].cidade!,
+                              registerStore.ocurrencies![index].cidade,
                               style: TextStyle(fontSize: 14),
                             ),
                           ],
@@ -190,7 +189,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                               width: 5,
                             ),
                             Text(
-                              registerStore.ocurrencies![index].uf!,
+                              registerStore.ocurrencies![index].uf,
                               style: TextStyle(fontSize: 14),
                             ),
                           ],
@@ -209,7 +208,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                               width: 5,
                             ),
                             Text(
-                              registerStore.ocurrencies![index].rua!,
+                              registerStore.ocurrencies![index].rua,
                               style: TextStyle(fontSize: 14),
                             ),
                           ],
@@ -228,7 +227,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                               width: 5,
                             ),
                             Text(
-                              registerStore.ocurrencies![index].bairro!,
+                              registerStore.ocurrencies![index].bairro,
                               style: TextStyle(fontSize: 14),
                             ),
                           ],
@@ -247,7 +246,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                               width: 5,
                             ),
                             Text(
-                              registerStore.ocurrencies![index].formattedDate!,
+                              registerStore.ocurrencies![index].formattedDate,
                               style: TextStyle(fontSize: 14),
                             ),
                           ],
@@ -266,7 +265,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                               width: 5,
                             ),
                             Text(
-                              registerStore.ocurrencies![index].formattedTime!,
+                              registerStore.ocurrencies![index].formattedTime,
                               style: TextStyle(fontSize: 14),
                             ),
                           ],
@@ -291,7 +290,7 @@ class _RegisterDetailsPageState extends State<RegisterDetailsPage> {
                             Expanded(
                               flex: 6,
                               child: Text(
-                                registerStore.ocurrencies![index].descricao!,
+                                registerStore.ocurrencies![index].descricao,
                                 style: TextStyle(fontSize: 14),
                                 textAlign: TextAlign.left,
                               ),

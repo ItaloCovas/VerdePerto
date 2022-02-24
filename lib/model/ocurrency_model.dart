@@ -2,52 +2,54 @@ import 'dart:convert';
 import 'dart:io';
 
 class OcurrencyModel {
-  String? denunciante;
-  String? uf;
-  String? cidade;
-  String? rua;
-  String? bairro;
-  int? cep;
-  String? id;
-  String? image;
-  String? tipoOcorrencia;
-  String? descricao;
-  double? latitude;
-  double? longitude;
-  String? formattedDate;
-  String? formattedTime;
+  String denunciante;
+  String uf;
+  String cidade;
+  String rua;
+  String bairro;
+  int cep;
+  String id;
+  String image;
+  String tipoOcorrencia;
+  String descricao;
+  double latitude;
+  double longitude;
+  String formattedDate;
+  String formattedTime;
 
   OcurrencyModel(
-      {this.denunciante,
-      this.uf,
-      this.cidade,
-      this.rua,
-      this.bairro,
-      this.cep,
-      this.id,
-      this.image,
-      this.tipoOcorrencia,
-      this.descricao,
-      this.latitude,
-      this.longitude,
-      this.formattedDate,
-      this.formattedTime});
+      {required this.denunciante,
+      required this.uf,
+      required this.cidade,
+      required this.rua,
+      required this.bairro,
+      required this.cep,
+      required this.id,
+      required this.image,
+      required this.tipoOcorrencia,
+      required this.descricao,
+      required this.latitude,
+      required this.longitude,
+      required this.formattedDate,
+      required this.formattedTime});
 
-  OcurrencyModel.fromJson(Map<String, dynamic> json) {
-    denunciante = json['denunciante'];
-    uf = json['uf'];
-    cidade = json['cidade'];
-    rua = json['rua'];
-    bairro = json['bairro'];
-    cep = json['cep'];
-    id = json['id'];
-    image = json['image'];
-    tipoOcorrencia = json['tipoOcorrencia'];
-    descricao = json['descricao'];
-    latitude = json['latitude'];
-    longitude = json['longitude'];
-    formattedDate = json['formattedDate'];
-    formattedTime = json['formattedTime'];
+  factory OcurrencyModel.fromJson(Map<String, dynamic> json) {
+    return OcurrencyModel(
+      denunciante: json['denunciante'],
+      uf: json['uf'],
+      cidade: json['cidade'],
+      rua: json['rua'],
+      bairro: json['bairro'],
+      cep: json['cep'],
+      id: json['id'],
+      image: json['image'],
+      tipoOcorrencia: json['tipoOcorrencia'],
+      descricao: json['descricao'],
+      latitude: json['latitude'],
+      longitude: json['longitude'],
+      formattedDate: json['formattedDate'],
+      formattedTime: json['formattedTime'],
+    );
   }
 
   Map<String, dynamic> toJson() {

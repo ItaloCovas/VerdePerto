@@ -545,7 +545,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                const FinishedPage()));
+                                                FinishedPage()));
                                   }
                                 },
                                 style: ButtonStyle(

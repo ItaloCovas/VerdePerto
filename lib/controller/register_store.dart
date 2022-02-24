@@ -121,18 +121,18 @@ abstract class _RegisterStoreBase with Store {
     String id = FirebaseFirestore.instance.collection('ocorrencias').doc().id;
     var url = await ref.getDownloadURL();
     OcurrencyModel newModel = OcurrencyModel(
-      denunciante: denunciante,
-      uf: uf,
+      denunciante: denunciante!,
+      uf: uf!,
       id: id,
-      cidade: cidade,
-      bairro: bairro,
-      rua: rua,
-      cep: cep,
+      cidade: cidade!,
+      bairro: bairro!,
+      rua: rua!,
+      cep: cep!,
       image: url,
-      tipoOcorrencia: tipoOcorrencia,
-      descricao: descricao,
-      latitude: latitude,
-      longitude: longitude,
+      tipoOcorrencia: tipoOcorrencia!,
+      descricao: descricao!,
+      latitude: latitude!,
+      longitude: longitude!,
       formattedDate: formattedDate,
       formattedTime: formattedTime,
     );

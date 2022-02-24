@@ -5,9 +5,9 @@ class Database {
   CollectionReference ocorrencias =
       FirebaseFirestore.instance.collection('ocorrencias');
 
-  Future<void> addOccurrence(OcurrencyModel model) {
+  Future<void> addOccurrence(OcurrencyModel model) async {
     // Call the user's CollectionReference to add a new user
-    return ocorrencias
+    return await ocorrencias
         .add(model.toJson())
         .then((value) => print("Occurrence Added"))
         .catchError((error) => print("Failed to add occurrence: $error"));

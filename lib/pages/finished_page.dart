@@ -21,24 +21,15 @@ class _FinishedPageState extends State<FinishedPage> {
 
   @override
   Widget build(BuildContext context) {
-    final registerStore = GetIt.I.get<RegisterStore>();
-
-    @override
-    void initState() {
-      super.initState();
-      registerStore.getOccurrences();
-    }
-
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      body: Container(
-          width: width,
-          height: height,
-          color: secondaryGray,
-          child: Observer(builder: (_) {
-            if (registerStore.ocurrencies != null) {
+        body: Container(
+            width: width,
+            height: height,
+            color: secondaryGray,
+            child: Observer(builder: (_) {
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -86,10 +77,6 @@ class _FinishedPageState extends State<FinishedPage> {
                       ]))
                 ],
               );
-            } else {
-              return const Center();
-            }
-          })),
-    );
+            })));
   }
 }
