@@ -18,7 +18,7 @@ class ReportsPage extends StatefulWidget {
 
 class _ReportsPageState extends State<ReportsPage> {
   final imageStore = GetIt.I.get<ImageStore>();
-  String dropdown = 'Todos';
+  String dropdown = 'Mais recente';
   final registerStore = GetIt.I.get<RegisterStore>();
 
   @override
@@ -105,7 +105,6 @@ class _ReportsPageState extends State<ReportsPage> {
                                 });
                               },
                               items: <String>[
-                                'Todos',
                                 'Mais recente',
                                 'Menos recente'
                               ].map<DropdownMenuItem<String>>((String value) {
@@ -131,6 +130,8 @@ class _ReportsPageState extends State<ReportsPage> {
                                 return ListView.builder(
                                   physics: const NeverScrollableScrollPhysics(),
                                   shrinkWrap: true,
+                                  reverse:
+                                      dropdown == "Mais recente" ? false : true,
                                   padding: const EdgeInsets.only(top: 10),
                                   scrollDirection: Axis.vertical,
                                   itemCount: registerStore.ocurrencies!.length,
