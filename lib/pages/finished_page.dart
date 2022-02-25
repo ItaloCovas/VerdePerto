@@ -56,7 +56,20 @@ class _FinishedPageState extends State<FinishedPage> {
                   const SizedBox(
                     height: 30,
                   ),
-                  Text(widget.id),
+                  const Text(
+                    'ID do registro: ',
+                    style: TextStyle(fontWeight: FontWeight.w700),
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    widget.id,
+                    style: TextStyle(fontStyle: FontStyle.italic),
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
                   RichText(
                       textAlign: TextAlign.center,
                       text: TextSpan(children: [

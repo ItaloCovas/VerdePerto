@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
+import 'package:verde_perto/controller/image_store.dart';
 import 'package:verde_perto/controller/register_store.dart';
 import 'package:verde_perto/pages/register_page.dart';
 import 'package:verde_perto/pages/registerdetails_page.dart';
@@ -16,6 +17,7 @@ class ReportsPage extends StatefulWidget {
 }
 
 class _ReportsPageState extends State<ReportsPage> {
+  final imageStore = GetIt.I.get<ImageStore>();
   String dropdown = 'Todos';
   final registerStore = GetIt.I.get<RegisterStore>();
 
@@ -227,10 +229,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                   fontWeight: FontWeight.bold),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
-                                  Navigator.pushReplacement(context,
-                                      MaterialPageRoute(builder: (context) {
-                                    return const RegisterPage();
-                                  }));
+                                  imageStore.getImagefromcamera();
                                 }),
                         ])),
                     const SizedBox(
